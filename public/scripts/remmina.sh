@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl sh.wss.moe/remmina.help
+# Help: curl https://sh.wss.moe/remmina.help
 
 echo "=== Remmina Remote Desktop ==="
-echo "Help: curl sh.wss.moe/remmina.help"
+echo "Help: curl https://sh.wss.moe/remmina.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 

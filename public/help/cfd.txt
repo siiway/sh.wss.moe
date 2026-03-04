@@ -1,8 +1,8 @@
 Cloudflared (official APT repo)
 
 Usage:
-  curl sh.wss.moe/cfd | sudo bash
-  curl sh.wss.moe/cfd | sudo bash -s -- --skip-fix   # skip sysctl fixes
+  curl https://sh.wss.moe/cfd | sudo bash
+  curl https://sh.wss.moe/cfd | sudo bash -s -- --skip-fix   # skip sysctl fixes
 
 Features:
   Installs from Cloudflare repo

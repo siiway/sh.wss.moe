@@ -1,7 +1,7 @@
 thefuck (Command Correction)
 
 Usage:
-  curl sh.wss.moe/thefuck | sudo bash
+  curl https://sh.wss.moe/thefuck | sudo bash
 
 Features:
   Installs thefuck

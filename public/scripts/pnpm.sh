@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl sh.wss.moe/pnpm.help
+# Help: curl https://sh.wss.moe/pnpm.help
 
 echo "=== pnpm Global Install ==="
-echo "Help: curl sh.wss.moe/pnpm.help"
+echo "Help: curl https://sh.wss.moe/pnpm.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 

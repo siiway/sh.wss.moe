@@ -1,8 +1,8 @@
 Firefox from Mozilla PPA
 
 Usage:
-  curl sh.wss.moe/firefox | sudo bash
-  curl sh.wss.moe/firefox | sudo bash -s -- --no-gnome   # skip GNOME integration
+  curl https://sh.wss.moe/firefox | sudo bash
+  curl https://sh.wss.moe/firefox | sudo bash -s -- --no-gnome   # skip GNOME integration
 
 Features:
   Adds PPA only if missing

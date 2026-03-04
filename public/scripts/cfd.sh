@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl sh.wss.moe/cfd.help
+# Help: curl https://sh.wss.moe/cfd.help
 
 echo "=== Cloudflared Installation ==="
-echo "Help: curl sh.wss.moe/cfd.help"
+echo "Help: curl https://sh.wss.moe/cfd.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 

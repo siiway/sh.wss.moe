@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl sh.wss.moe/firefox.help
+# Help: curl https://sh.wss.moe/firefox.help
 
 echo "=== Firefox from Mozilla PPA ==="
-echo "Help: curl sh.wss.moe/firefox.help"
+echo "Help: curl https://sh.wss.moe/firefox.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 

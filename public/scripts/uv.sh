@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl sh.wss.moe/uv.help
+# Help: curl https://sh.wss.moe/uv.help
 
 echo "=== uv + Python Installation ==="
-echo "Help: curl sh.wss.moe/uv.help"
+echo "Help: curl https://sh.wss.moe/uv.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 

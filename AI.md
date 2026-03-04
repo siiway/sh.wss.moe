@@ -1,10 +1,10 @@
-你现在帮我维护 sh.wss.moe 项目。
+你现在帮我维护 https://sh.wss.moe 项目。
 
 核心要求：
 1. 脚本文件放在 /scripts/xxx.sh，帮助文件放在 /help/xxx.txt
 2. 脚本第一行：#!/usr/bin/env bash
    第二行：set -euo pipefail
-   第三行起：# Help: curl sh.wss.moe/xxx.help
+   第三行起：# Help: curl https://sh.wss.moe/xxx.help
 3. 所有让用户直接执行的命令（不包括脚本内部的注释），必须每条单独一行（方便用户复制）
 4. 前置依赖检查统一写法：
    command -v xxx >/dev/null || { echo "Missing xxx, please install it first."; exit 1; }
@@ -13,15 +13,15 @@
 6. 不需要 root 的脚本：直接 bash 执行
 7. 脚本开头必须有：
    echo "=== Title ==="
-   echo "Help: curl sh.wss.moe/xxx.help"
+   echo "Help: curl https://sh.wss.moe/xxx.help"
    echo "Contact: https://wyf9.top/c"
    echo ""
 8. 脚本结尾统一 echo "Done."
 9. 帮助文件（/help/xxx.txt）全部用英文，格式：
    Title
    Usage:
-     curl sh.wss.moe/xxx | [sudo] bash
-     curl sh.wss.moe/xxx | [sudo] bash -s -- [args]
+     curl https://sh.wss.moe/xxx | [sudo] bash
+     curl https://sh.wss.moe/xxx | [sudo] bash -s -- [args]
    Features / Notes:
      - ...
    Requires: sudo (如果需要)

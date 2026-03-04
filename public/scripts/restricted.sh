@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl sh.wss.moe/restricted.help
+# Help: curl https://sh.wss.moe/restricted.help
 
 echo "=== Ubuntu Restricted Extras ==="
-echo "Help: curl sh.wss.moe/restricted.help"
+echo "Help: curl https://sh.wss.moe/restricted.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 

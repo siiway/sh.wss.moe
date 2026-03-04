@@ -1,7 +1,7 @@
 PM2 Process Manager
 
 Usage:
-  curl sh.wss.moe/pm2 | bash
+  curl https://sh.wss.moe/pm2 | bash
 
 Features:
   Installs PM2 globally via pnpm

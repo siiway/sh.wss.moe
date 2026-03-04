@@ -1,8 +1,8 @@
 pnpm Package Manager
 
 Usage:
-  curl sh.wss.moe/pnpm | bash
-  curl sh.wss.moe/pnpm | bash -s -- --no-mirror   # skip China mirror
+  curl https://sh.wss.moe/pnpm | bash
+  curl https://sh.wss.moe/pnpm | bash -s -- --no-mirror   # skip China mirror
 
 Features:
   Installs pnpm globally via npm

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl sh.wss.moe/swap.help
+# Help: curl https://sh.wss.moe/swap.help
 
 echo "=== Add / Resize Swapfile ==="
-echo "Help: curl sh.wss.moe/swap.help"
+echo "Help: curl https://sh.wss.moe/swap.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 

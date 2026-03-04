@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl sh.wss.moe/thunderbird.help
+# Help: curl https://sh.wss.moe/thunderbird.help
 
 echo "=== Thunderbird from Mozilla PPA ==="
-echo "Help: curl sh.wss.moe/thunderbird.help"
+echo "Help: curl https://sh.wss.moe/thunderbird.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 

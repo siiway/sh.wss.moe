@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl sh.wss.moe/node.help
+# Help: curl https://sh.wss.moe/node.help
 
 echo "=== Node.js via nvm ==="
-echo "Help: curl sh.wss.moe/node.help"
+echo "Help: curl https://sh.wss.moe/node.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 

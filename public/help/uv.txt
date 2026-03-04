@@ -1,8 +1,8 @@
 uv (Fast Python Tool) + Specified Python Version
 
 Usage:
-  curl sh.wss.moe/uv | bash
-  curl sh.wss.moe/uv | bash -s -- 3.12     # custom version
+  curl https://sh.wss.moe/uv | bash
+  curl https://sh.wss.moe/uv | bash -s -- 3.12     # custom version
 
 Features:
   Installs uv via official script

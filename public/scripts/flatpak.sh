@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl sh.wss.moe/flatpak.help
+# Help: curl https://sh.wss.moe/flatpak.help
 
 echo "=== Flatpak + Flathub Setup ==="
-echo "Help: curl sh.wss.moe/flatpak.help"
+echo "Help: curl https://sh.wss.moe/flatpak.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 

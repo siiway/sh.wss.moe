@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl sh.wss.moe/nosnap.help
+# Help: curl https://sh.wss.moe/nosnap.help
 
 echo "=== Remove and Block Snapd ==="
-echo "Help: curl sh.wss.moe/nosnap.help"
+echo "Help: curl https://sh.wss.moe/nosnap.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 

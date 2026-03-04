@@ -1,7 +1,7 @@
 Waylyrics (Wayland Lyrics Display)
 
 Usage:
-  curl sh.wss.moe/waylyrics | sudo bash
+  curl https://sh.wss.moe/waylyrics | sudo bash
 
 Features:
   Clones repo, builds with cargo, installs to system paths

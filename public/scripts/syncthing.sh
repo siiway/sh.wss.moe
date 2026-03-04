@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl sh.wss.moe/syncthing.help
+# Help: curl https://sh.wss.moe/syncthing.help
 
 echo "=== Syncthing Installation ==="
-echo "Help: curl sh.wss.moe/syncthing.help"
+echo "Help: curl https://sh.wss.moe/syncthing.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 
