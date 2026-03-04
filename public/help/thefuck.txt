@@ -1,0 +1,10 @@
+thefuck (Command Correction)
+
+Usage:
+  curl sh.wss.moe/thefuck | sudo bash
+
+Features:
+  Installs thefuck
+  Adds alias to ~/.bashrc if missing
+
+Requires: sudo

@@ -1,0 +1,13 @@
+uv (Fast Python Tool) + Specified Python Version
+
+Usage:
+  curl sh.wss.moe/uv | bash
+  curl sh.wss.moe/uv | bash -s -- 3.12     # custom version
+
+Features:
+  Installs uv via official script
+  Installs requested Python version (default: 3.13)
+  Adds uv to PATH (may need terminal restart)
+
+No sudo required
+Pre-dependency: curl

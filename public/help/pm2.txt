@@ -1,0 +1,10 @@
+PM2 Process Manager
+
+Usage:
+  curl sh.wss.moe/pm2 | bash
+
+Features:
+  Installs PM2 globally via pnpm
+
+No sudo required for install
+Pre-dependency: pnpm

@@ -1,0 +1,13 @@
+Firefox from Mozilla PPA
+
+Usage:
+  curl sh.wss.moe/firefox | sudo bash
+  curl sh.wss.moe/firefox | sudo bash -s -- --no-gnome   # skip GNOME integration
+
+Features:
+  Adds PPA only if missing
+  Sets high-priority pinning
+  Installs latest Firefox
+  GNOME support optional (--no-gnome to skip)
+
+Requires: sudo

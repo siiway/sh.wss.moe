@@ -1,0 +1,10 @@
+Syncthing (official stable repo)
+
+Usage:
+  curl sh.wss.moe/syncthing | sudo bash
+
+Features:
+  Adds official repo and installs Syncthing
+
+Requires: sudo
+Pre-dependency: curl

@@ -1,0 +1,9 @@
+Caddy Web Server (official)
+
+Usage:
+  curl sh.wss.moe/caddy | sudo bash
+
+Features:
+  Adds official repo and installs Caddy
+
+Requires: sudo

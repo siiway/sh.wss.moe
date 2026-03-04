@@ -1,0 +1,9 @@
+VLC Media Player
+
+Usage:
+  curl sh.wss.moe/vlc | sudo bash
+
+Features:
+  Installs VLC from Ubuntu repos
+
+Requires: sudo

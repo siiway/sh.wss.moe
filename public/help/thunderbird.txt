@@ -1,0 +1,13 @@
+Thunderbird from Mozilla PPA
+
+Usage:
+  curl sh.wss.moe/thunderbird | sudo bash
+  curl sh.wss.moe/thunderbird | sudo bash -s -- --no-gnome   # skip GNOME integration
+
+Features:
+  Adds PPA only if missing
+  Sets high-priority pinning
+  Installs Thunderbird
+  GNOME support optional (--no-gnome to skip)
+
+Requires: sudo

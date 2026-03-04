@@ -1,0 +1,13 @@
+pnpm Package Manager
+
+Usage:
+  curl sh.wss.moe/pnpm | bash
+  curl sh.wss.moe/pnpm | bash -s -- --no-mirror   # skip China mirror
+
+Features:
+  Installs pnpm globally via npm
+  Sets npmmirror registry by default (fast in China)
+  Use --no-mirror to skip mirror
+
+No sudo required
+Pre-dependency: npm (from node)

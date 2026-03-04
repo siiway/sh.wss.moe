@@ -1,0 +1,11 @@
+Waylyrics (Wayland Lyrics Display)
+
+Usage:
+  curl sh.wss.moe/waylyrics | sudo bash
+
+Features:
+  Clones repo, builds with cargo, installs to system paths
+  Includes zh_CN translation and themes
+
+Requires: sudo
+Pre-dependencies: git, cargo/rustup

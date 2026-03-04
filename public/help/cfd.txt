@@ -1,0 +1,13 @@
+Cloudflared (official APT repo)
+
+Usage:
+  curl sh.wss.moe/cfd | sudo bash
+  curl sh.wss.moe/cfd | sudo bash -s -- --skip-fix   # skip sysctl fixes
+
+Features:
+  Installs from Cloudflare repo
+  Applies buffer + ping fixes by default
+  Shows version after install
+
+Requires: sudo
+Pre-dependency: curl

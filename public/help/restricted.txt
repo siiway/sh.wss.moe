@@ -1,0 +1,9 @@
+Ubuntu Restricted Extras (codecs, fonts)
+
+Usage:
+  curl sh.wss.moe/restricted | sudo bash
+
+Features:
+  Installs multimedia codecs and Microsoft fonts
+
+Requires: sudo

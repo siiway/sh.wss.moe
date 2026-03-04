@@ -1,0 +1,9 @@
+Remove and Block Snapd Completely
+
+Usage:
+  curl sh.wss.moe/nosnap | sudo bash
+
+Features:
+  Purges snapd and adds APT pinning to prevent reinstall
+
+Requires: sudo
