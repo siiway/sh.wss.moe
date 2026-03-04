@@ -1,3 +1,9 @@
+# Some short aliases (optional, can be extended)
+/ff                     /scripts/firefox.sh     200
+/cloudflared            /scripts/cfd.sh         200
+/bashrc                 /scripts/ps1.sh         200
+/fuck                   /scripts/thefuck.sh     200
+
 # Root alias →  real script
 /*                      /scripts/:splat.sh      200
 
@@ -11,5 +17,3 @@
 
 /help/*                 /help/:splat.txt        200
 
-# Some short aliases (optional, can be extended)
-/ff                     /scripts/firefox.sh     200

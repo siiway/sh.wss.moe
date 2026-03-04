@@ -1,0 +1,16 @@
+Custom PS1 Prompt Setup
+
+Usage:
+  curl https://sh.wss.moe/ps1 | bash
+  curl https://sh.wss.moe/ps1 | bash --git
+  curl https://sh.wss.moe/ps1 | bash --no-newline
+  curl https://sh.wss.moe/ps1 | bash --git --no-newline
+
+Features:
+  Default: Multi-line prompt without Git status
+  --git: Include Git branch and simple status indicators
+  --no-newline: Single-line prompt
+  Appends to ~/.bashrc (with backup of original)
+  Colors: time(green), user(yellow), @ (purple), path(red), git(blue)
+
+No sudo required.
