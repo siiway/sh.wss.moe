@@ -9,3 +9,5 @@ Features:
 
 No sudo required
 Pre-dependency: curl
+From: https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating
+

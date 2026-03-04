@@ -11,3 +11,4 @@ Parameters:
   3. swappiness (default 20)
 
 Requires: sudo
+From: https://wyf9.top/p/linux-newinst#%E8%B0%83%E6%95%B4-swap-%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F

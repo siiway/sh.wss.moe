@@ -7,3 +7,5 @@ Features:
   Adds official repo and installs Caddy
 
 Requires: sudo
+From: https://caddyserver.com.cn/docs/install
+

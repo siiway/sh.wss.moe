@@ -7,3 +7,4 @@ Features:
   Purges snapd and adds APT pinning to prevent reinstall
 
 Requires: sudo
+From: https://wyf9.top/p/ubuntu-nosnap

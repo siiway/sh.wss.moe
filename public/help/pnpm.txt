@@ -11,3 +11,4 @@ Features:
 
 No sudo required
 Pre-dependency: npm (from node)
+From: https://pnpm.io/installation#using-npm

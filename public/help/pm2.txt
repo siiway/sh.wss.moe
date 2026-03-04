@@ -4,7 +4,8 @@ Usage:
   curl https://sh.wss.moe/pm2 | bash
 
 Features:
-  Installs PM2 globally via pnpm
+  Installs PM2 (user-scope) via pnpm
 
 No sudo required for install
 Pre-dependency: pnpm
+From: https://pm2.keymetrics.io/docs/usage/quick-start/

@@ -7,3 +7,4 @@ Features:
   Installs libfuse2t64 to fix AppImage execution issues
 
 Requires: sudo
+From: https://github.com/AppImage/AppImageKit/wiki/FUSE#install-fuse

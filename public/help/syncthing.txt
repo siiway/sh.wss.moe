@@ -8,3 +8,5 @@ Features:
 
 Requires: sudo
 Pre-dependency: curl
+From: https://apt.syncthing.net/
+

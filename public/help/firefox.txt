@@ -11,3 +11,5 @@ Features:
   GNOME support optional (--no-gnome to skip)
 
 Requires: sudo
+From: https://launchpad.net/~mozillateam/+archive/ubuntu/ppa
+

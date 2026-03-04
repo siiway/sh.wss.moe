@@ -8,4 +8,4 @@ Features:
   Includes zh_CN translation and themes
 
 Requires: sudo
-Pre-dependencies: git, cargo/rustup
+From: https://github.com/waylyrics/waylyrics/blob/master/doc/INSTALLATION.md

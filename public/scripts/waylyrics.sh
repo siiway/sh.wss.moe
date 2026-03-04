@@ -7,10 +7,7 @@ echo "Help: curl https://sh.wss.moe/waylyrics.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 
-command -v git >/dev/null || { echo "Missing git."; exit 1; }
-command -v cargo >/dev/null || { echo "Missing cargo (install rustup first)."; exit 1; }
-
-sudo apt install -y build-essential libssl-dev libgtk-4-dev libdbus-1-dev libmimalloc-dev gettext
+sudo apt install -y git rustup build-essential libssl-dev libgtk-4-dev libdbus-1-dev libmimalloc-dev gettext
 
 rustup update stable
 

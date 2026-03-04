@@ -7,3 +7,5 @@ Features:
   Installs Flatpak and adds Flathub repository
 
 Requires: sudo
+From: https://flatpak.org/setup/
+
