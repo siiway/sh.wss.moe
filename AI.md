@@ -1,4 +1,4 @@
-你现在帮我维护 https://sh.wss.moe 项目。
+你现在帮我维护 sh.wss.moe 项目。
 
 核心要求：
 1. 脚本文件放在 /scripts/xxx.sh，帮助文件放在 /help/xxx.txt
@@ -28,6 +28,7 @@
 10. 支持参数时使用 ${1:-default} 写法，并在前几行 echo 当前使用的参数值（如果合适）
 11. 所有换加速源（如 pnpm registry）、gnome 支持包（如 *-gnome-support）必须做成可选项，默认开启，参数如 --no-xxx 跳过
 12. 帮助文件保持简洁，突出用法、特性、可选项
+13. curl 后必须使用带 https:// 的 url (因为站点开启了强制 https)
 
 现在请为 [具体软件/功能名称] 创作脚本 scripts/xxx.sh 和 help/xxx.txt，
 基于以下安装步骤/需求：

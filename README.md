@@ -1,4 +1,4 @@
-# https://sh.wss.moe - 一键安装脚本合集
+# sh.wss.moe - 一键安装脚本合集
 
 给新 Linux 系统（主要是 Ubuntu 24.04+ / Debian-based）快速部署常用工具的脚本集合。
 
