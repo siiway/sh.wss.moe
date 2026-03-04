@@ -15,7 +15,7 @@ if [[ "$SKIP_FIX" != "--skip-fix" ]]; then
   echo "net.core.rmem_max=7500000" | sudo tee -a /etc/sysctl.conf >/dev/null
   echo "net.core.wmem_max=7500000" | sudo tee -a /etc/sysctl.conf >/dev/null
   echo "net.ipv4.ping_group_range=0 114514" | sudo tee -a /etc/sysctl.conf >/dev/null
-  sudo sysctl -p
+  sudo sysctl -p || true
 fi
 
 sudo mkdir -p --mode=0755 /usr/share/keyrings
