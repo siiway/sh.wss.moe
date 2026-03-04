@@ -14,3 +14,4 @@ Features:
   Colors: time(green), user(yellow), @ (purple), path(red), git(blue)
 
 No sudo required.
+From: https://wyf9.top/p/bashrc-ps1

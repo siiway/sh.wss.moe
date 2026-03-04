@@ -2,7 +2,7 @@
 set -euo pipefail
 # Help: curl https://sh.wss.moe/pnpm.help
 
-echo "=== pnpm Global Install ==="
+echo "=== pnpm User Install ==="
 echo "Help: curl https://sh.wss.moe/pnpm.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
@@ -18,5 +18,7 @@ if [[ "$MIRROR" != "--no-mirror" ]]; then
 else
   echo "Skipped registry mirror."
 fi
+
+pnpm setup
 
 echo "Done."
