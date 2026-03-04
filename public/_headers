@@ -1,0 +1,21 @@
+# sh.wss.moe headers
+
+/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noai, noimageai
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: no-referrer
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Access-Control-Allow-Origin: *
+
+# 根路径和 .help 文件 → 纯文本显示
+/ 
+  Content-Type: text/plain; charset=utf-8
+
+/*.help
+  Content-Type: text/plain; charset=utf-8
+
+# 其他文件（主要是 .sh 脚本） → 推荐的脚本类型
+# （Cloudflare 默认对无扩展名文件可能给 octet-stream，这里强制更合适的类型）
+/*
+  Content-Type: text/x-sh; charset=utf-8
