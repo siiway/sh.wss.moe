@@ -6,7 +6,7 @@ Usage:
 
 Features:
   Installs from Cloudflare repo
-  Applies buffer + ping fixes by default
+  Applies buffer (if config exists) + ping fixes by default
   Shows version after install
 
 Requires: sudo
