@@ -1,0 +1,17 @@
+Enable TCP BBR with Auto Buffer Tuning
+
+Usage:
+  curl https://sh.wss.moe/bbr | sudo bash
+  curl https://sh.wss.moe/bbr | sudo bash --bbr-only   # only enable core BBR (fq + bbr)
+
+Features:
+  Default: Full tuning (BBR + fq + tcp_fastopen + auto buffer + tcp_rmem/wmem + window_scaling + sack)
+  --bbr-only: Only set net.core.default_qdisc=fq and net.ipv4.tcp_congestion_control=bbr
+  Auto buffer sizing based on RAM (full mode only):
+    <=4GB  → max 4MB
+    4-16GB → max 8MB
+    >16GB  → max 16MB
+  Skips existing settings in /etc/sysctl.conf
+  Applies changes (sysctl -p, tolerant)
+
+Requires: sudo

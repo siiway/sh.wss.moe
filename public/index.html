@@ -1,24 +1,34 @@
 sh.wss.moe - Quick Scripts
 Help for a script: curl https://sh.wss.moe/<NAME>.help
-Available scripts (updated 2026-03-05):
+Available scripts (updated 2026-03-06):
 
+# System Related
 curl https://sh.wss.moe/ps1 | bash   # Bashrc PS1 | [--git] [--no-newline]
-curl https://sh.wss.moe/cfd | sudo bash   # Cloudflared | [--skip-fix]
+curl https://sh.wss.moe/nosnap | sudo bash   # Remove & block snap
 curl https://sh.wss.moe/swap | sudo bash   # Swapfile [size] [path] [swappiness]
-curl https://sh.wss.moe/firefox | sudo bash   # Firefox | [--no-gnome]
-curl https://sh.wss.moe/thunderbird | sudo bash   # Thunderbird | [--no-gnome]
+curl https://sh.wss.moe/bbr | sudo bash   # Enable TCP BBR [--bbr-only]
+
+# Programming Languages
 curl https://sh.wss.moe/node | bash   # Node.js via nvm | [version]
 curl https://sh.wss.moe/pnpm | bash   # pnpm | [--no-mirror]
 curl https://sh.wss.moe/pm2 | bash   # PM2
 curl https://sh.wss.moe/uv | bash   # uv + python | [version]
+
+# Prerequirements
 curl https://sh.wss.moe/flatpak | sudo bash   # Flatpak + Flathub
 curl https://sh.wss.moe/fuse | sudo bash   # AppImage FUSE
-curl https://sh.wss.moe/nosnap | sudo bash   # Remove & block snap
-curl https://sh.wss.moe/syncthing | sudo bash   # Syncthing official
+
+# Server
+curl https://sh.wss.moe/cfd | sudo bash   # Cloudflared | [--skip-fix]
 curl https://sh.wss.moe/caddy | sudo bash   # Caddy
+
+# Desktop
+curl https://sh.wss.moe/firefox | sudo bash   # Firefox | [--no-gnome]
+curl https://sh.wss.moe/thunderbird | sudo bash   # Thunderbird | [--no-gnome]
+curl https://sh.wss.moe/syncthing | sudo bash   # Syncthing official
 curl https://sh.wss.moe/thefuck | sudo bash   # thefuck
 curl https://sh.wss.moe/waylyrics | sudo bash   # Waylyrics
-curl https://sh.wss.moe/bottles | bash   # Bottles flatpak overrides
+curl https://sh.wss.moe/bottles | bash   # Bottles flatpak
 curl https://sh.wss.moe/vlc | sudo bash   # VLC
 curl https://sh.wss.moe/remmina | sudo bash   # Remmina
 curl https://sh.wss.moe/restricted | sudo bash   # restricted-extras
