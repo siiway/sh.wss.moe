@@ -4,12 +4,6 @@
 /bashrc                 /scripts/ps1.sh         200
 /fuck                   /scripts/thefuck.sh     200
 
-# Root alias →  real script
-/*                      /scripts/:splat.sh      200
-
-# Support typing .sh explicitly
-/*.sh                   /scripts/:splat.sh      200
-
 # Help aliases
 /*.help                 /help/:splat.txt        200
 /*.h                    /help/:splat.txt        200
@@ -17,3 +11,8 @@
 
 /help/*                 /help/:splat.txt        200
 
+# Support typing .sh explicitly
+/*.sh                   /scripts/:splat.sh      200
+
+# Root alias →  real script
+/*                      /scripts/:splat.sh      200
