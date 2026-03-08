@@ -8,4 +8,4 @@ Features:
 
 Requires: sudo
 From: https://caddyserver.com.cn/docs/install
-
+Ref: https://wyf9.top/p/linux-newinst#caddy

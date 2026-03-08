@@ -9,3 +9,4 @@ Features:
 
 Requires: sudo
 From: https://github.com/nvbn/thefuck?tab=readme-ov-file#installation
+Ref: https://wyf9.top/p/linux-newinst#thefxxk

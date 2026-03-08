@@ -9,3 +9,4 @@ Features:
 No sudo required for install
 Pre-dependency: pnpm
 From: https://pm2.keymetrics.io/docs/usage/quick-start/
+Ref: https://wyf9.top/p/linux-newinst#pm2

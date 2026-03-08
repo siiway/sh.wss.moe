@@ -8,3 +8,4 @@ Features:
 
 Requires: sudo
 From: https://wyf9.top/p/ubuntu-nosnap
+Ref: https://wyf9.top/p/linux-newinst#%E5%8E%BB-snap

@@ -15,3 +15,4 @@ Features:
   Applies changes (sysctl -p, tolerant)
 
 Requires: sudo
+Ref: https://wyf9.top/p/linux-newinst#%E5%BC%80%E5%90%AF-bbr

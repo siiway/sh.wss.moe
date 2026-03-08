@@ -1,9 +1,0 @@
-Remmina (RDP/VNC Client)
-
-Usage:
-  curl https://sh.wss.moe/remmina | sudo bash
-
-Features:
-  Installs Remmina with RDP and VNC plugins
-
-Requires: sudo

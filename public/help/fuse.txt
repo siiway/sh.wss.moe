@@ -8,3 +8,4 @@ Features:
 
 Requires: sudo
 From: https://github.com/AppImage/AppImageKit/wiki/FUSE#install-fuse
+Ref: https://wyf9.top/p/linux-newinst#appimage-%E5%89%8D%E7%BD%AE

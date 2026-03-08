@@ -1,14 +1,16 @@
-uv (Fast Python Tool) + Specified Python Version
+uv (Fast Python Tool) Installation
 
 Usage:
   curl https://sh.wss.moe/uv | bash
-  curl https://sh.wss.moe/uv | bash -s -- 3.12     # custom version
+  curl https://sh.wss.moe/uv | bash 3.13     # also install Python 3.13
+  curl https://sh.wss.moe/uv | bash 3.12     # install Python 3.12, etc.
 
 Features:
-  Installs uv via official script
-  Installs requested Python version (default: 3.13)
-  Adds uv to PATH (may need terminal restart)
+  - Installs uv via official script
+  - Adds uv to PATH (may need terminal restart)
+  - Default: Only installs uv, no Python version
+  - Pass a version (e.g. 3.13) as first argument to also install that Python version
 
 No sudo required
 Pre-dependency: curl
-From: https://docs.astral.sh/uv/getting-started/installation/
+Ref: https://wyf9.top/p/linux-newinst#python-uv

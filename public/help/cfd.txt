@@ -12,4 +12,4 @@ Features:
 Requires: sudo
 Pre-dependency: curl
 From: https://pkg.cloudflare.com/
-
+Ref: https://wyf9.top/p/linux-newinst#cloudflared

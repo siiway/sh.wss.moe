@@ -10,4 +10,4 @@ Features:
 No sudo required
 Pre-dependency: curl
 From: https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating
-
+Ref: https://wyf9.top/p/linux-newinst#nodejs-nvm

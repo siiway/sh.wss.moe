@@ -1,0 +1,16 @@
+Bottles Flatpak Installation & Permissions
+
+Usage:
+  curl https://sh.wss.moe/bottles | bash
+
+Features:
+  - Installs Bottles from Flathub if not present
+  - Applies essential overrides for:
+    - Desktop entries (xdg-data/applications)
+    - Native Steam integration (~/.local/share/Steam)
+    - Flatpak Steam integration (~/.var/app/com.valvesoftware.Steam/data/Steam)
+  - User-level overrides (no sudo needed after flatpak install)
+
+No sudo required (except if flatpak not installed)
+Pre-dependency: flatpak
+Ref: https://wyf9.top/p/linux-newinst#bottles

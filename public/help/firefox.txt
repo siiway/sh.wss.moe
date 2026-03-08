@@ -12,4 +12,4 @@ Features:
 
 Requires: sudo
 From: https://launchpad.net/~mozillateam/+archive/ubuntu/ppa
-
+Ref: https://wyf9.top/p/linux-newinst#firefox--thunderbird-ppa-ubuntu-20

@@ -9,3 +9,4 @@ Features:
 
 Requires: sudo
 From: https://github.com/waylyrics/waylyrics/blob/master/doc/INSTALLATION.md
+Ref: https://wyf9.top/p/linux-newinst#waylyrics

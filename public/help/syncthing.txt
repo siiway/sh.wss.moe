@@ -9,4 +9,4 @@ Features:
 Requires: sudo
 Pre-dependency: curl
 From: https://apt.syncthing.net/
-
+Ref: https://wyf9.top/p/linux-newinst#syncthing
