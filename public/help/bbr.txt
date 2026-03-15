@@ -2,7 +2,7 @@ Enable TCP BBR with Auto Buffer Tuning
 
 Usage:
   curl https://sh.wss.moe/bbr | sudo bash
-  curl https://sh.wss.moe/bbr | sudo bash --bbr-only   # only enable core BBR (fq + bbr)
+  curl https://sh.wss.moe/bbr | sudo bash -s -- --bbr-only   # only enable core BBR (fq + bbr)
 
 Features:
   Default: Full tuning (BBR + fq + tcp_fastopen + auto buffer + tcp_rmem/wmem + window_scaling + sack)

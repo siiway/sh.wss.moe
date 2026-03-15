@@ -14,7 +14,7 @@ for arg in "$@"; do
   case "$arg" in
     --bbr-only) BBR_ONLY=1 ;;
     --help|-h)
-      echo "Usage: curl https://sh.wss.moe/bbr | sudo bash [options]"
+      echo "Usage: curl https://sh.wss.moe/bbr | sudo bash [-s -- <OPTIONS>]"
       echo "Options:"
       echo "  --bbr-only     Only enable core BBR (fq + bbr), skip buffer and other tunings"
       echo "  --help         Show this help"

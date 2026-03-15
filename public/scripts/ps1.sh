@@ -16,7 +16,7 @@ for arg in "$@"; do
     --git)          USE_GIT=1 ;;
     --no-newline)   USE_NEWLINE=0 ;;
     --help|-h)
-      echo "Usage: curl https://sh.wss.moe/ps1 | bash [options]"
+      echo "Usage: curl https://sh.wss.moe/ps1 | bash [-s -- <OPTIONS>]"
       echo "Options:"
       echo "  --git          Enable Git branch and status in prompt"
       echo "  --no-newline   Use single-line prompt (no newline before $)"
