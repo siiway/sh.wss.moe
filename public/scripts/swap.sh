@@ -15,6 +15,7 @@ echo "Size: $SIZE   File: $SWAPFILE   Swappiness: $SWAPPINESS"
 
 if [[ -f "$SWAPFILE" ]]; then
   sudo swapoff "$SWAPFILE" 2>/dev/null || true
+  rm -f "$SWAPFILE" 2>/dev/null || true
 fi
 
 sudo fallocate -l "$SIZE" "$SWAPFILE"
