@@ -19,7 +19,7 @@ for arg in "$@"; do
       echo "Usage: curl https://sh.wss.moe/ps1 | bash [-s -- <OPTIONS>]"
       echo "Options:"
       echo "  --git          Enable Git branch and status in prompt"
-      echo "  --no-newline   Use single-line prompt (no newline before $)"
+      echo "  --no-newline   Use single-line prompt (no newline before \$)"
       echo "  --help         Show this help"
       exit 0
       ;;
@@ -29,27 +29,32 @@ done
 
 BASHRC="$HOME/.bashrc"
 
-# Git parse function (only if --git is used)
+# Stable Git parse function
 GIT_PARSE_FUNC='
 parse_git_status() {
-  local branch dirty untracked ahead behind
-  branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null) || return
-  [ -z "$branch" ] && return
+  git rev-parse --git-dir >/dev/null 2>&1 || return 0
 
-  untracked=$(git status --porcelain 2>/dev/null | grep -c "^??" || echo 0)
-  dirty=$(git diff --name-only --diff-filter=ACMRT 2>/dev/null | wc -l)
-  staged=$(git diff --cached --name-only --diff-filter=ACMRT 2>/dev/null | wc -l)
-  ahead=$(git rev-list --count @{u}..HEAD 2>/dev/null || echo 0)
-  behind=$(git rev-list --count HEAD..@{u} 2>/dev/null || echo 0)
+  local git_status branch ab status=""
+  git_status=$(git status --porcelain --branch 2>/dev/null)
 
-  local status=""
-  [ "$untracked" -gt 0 ] && status="${status}%"
-  [ "$dirty" -gt 0 ]     && status="${status}*"
-  [ "$staged" -gt 0 ]    && status="${status}+"
-  [ "$ahead" -gt 0 ]     && status="${status}>"
-  [ "$behind" -gt 0 ]    && status="${status}<"
+  # untracked files
+  [[ $git_status =~ ^\?\? ]] && status+="%"
 
-  echo "($branch${status:+ $status})"
+  # dirty (modified/deleted/etc in worktree)
+  [[ $git_status =~ ^.[MD] ]] && status+="*"
+
+  # staged changes
+  [[ $git_status =~ ^[MADR] ]] && status+="+"
+
+  # ahead/behind count
+  ab=$(echo "$git_status" | grep -o "\[.*\]" || true)
+  [[ $ab =~ ahead\ ([0-9]+) ]] && status+=">${BASH_REMATCH[1]}"
+  [[ $ab =~ behind\ ([0-9]+) ]] && status+="<${BASH_REMATCH[1]}"
+
+  branch=$(git branch --show-current 2>/dev/null)
+  [[ -z "$branch" ]] && branch=$(git rev-parse --short HEAD 2>/dev/null | sed "s/^/detached@/" || echo "")
+
+  [[ -n "$branch" ]] && echo " ($branch${status:+ $status})"
 }
 '
 
@@ -72,14 +77,14 @@ fi
 
 # Backup .bashrc
 if [ -f "$BASHRC" ]; then
-  cp "$BASHRC" "${BASHRC}.bak"
-  echo "Backuped $BASHRC to ${BASHRC}.bak"
+  cp "$BASHRC" "${BASHRC}.bak-$(date +%Y%m%d-%H%M%S)"
+  echo "Backed up $BASHRC to ${BASHRC}.bak-$(date +%Y%m%d-%H%M%S)"
 fi
 
 # Append new config
 {
   echo ""
-  echo "# Custom PS1 added by https://sh.wss.moe/ps1"
+  echo "# Custom PS1 added by https://sh.wss.moe/ps1 (stable git parse)"
   if [ "$USE_GIT" -eq 1 ]; then
     echo "$GIT_PARSE_FUNC"
   fi
@@ -87,9 +92,9 @@ fi
 } >> "$BASHRC"
 
 echo "PS1 has been updated in ~/.bashrc"
-echo 'To apply immediately:
-source ~/.bashrc
-or open a new terminal.'
+echo "To apply immediately:"
+echo "  source ~/.bashrc"
+echo "  or open a new terminal."
+echo ""
 echo "Current mode: $( [ "$USE_NEWLINE" -eq 1 ] && echo "multi-line" || echo "single-line" ) + $( [ "$USE_GIT" -eq 1 ] && echo "with Git" || echo "no Git" )"
-
 echo "Done."
