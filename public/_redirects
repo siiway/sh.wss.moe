@@ -3,6 +3,7 @@
 /cloudflared            /scripts/cfd.sh         200
 /bashrc                 /scripts/ps1.sh         200
 /fuck                   /scripts/thefuck.sh     200
+/postgresql             /scripts/pgsql.sh       200
 
 # Help aliases
 /*.help                 /help/:splat.txt        200

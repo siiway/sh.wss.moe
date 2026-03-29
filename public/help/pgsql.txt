@@ -1,0 +1,11 @@
+PostgreSQL One-Click Installer
+
+Usage:
+curl https://sh.wss.moe/pgsql | sudo bash
+curl https://sh.wss.moe/pgsql | sudo bash -s -- --db <dbname> --user <username>
+
+Features / Notes:
+* Installs PostgreSQL + contrib from official repositories
+* Creates database and user (if specified via --db & --user), then ask for password
+* Applies secure defaults: listen on 127.0.0.1:5432 only, scram-sha-256 encryption
+* Requires: sudo
