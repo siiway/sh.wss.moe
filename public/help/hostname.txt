@@ -1,12 +1,12 @@
 Change Linux Hostname
 
 Usage:
-  curl https://sh.wss.moe/hostname | sudo bash new-hostname
-  curl https://sh.wss.moe/hostname | sudo bash new-hostname --temp   # temporary only (reboot reverts)
+  sudo bash <(curl -fsS https://sh.wss.moe/hostname) new-hostname
+  sudo bash <(curl -fsS https://sh.wss.moe/hostname) new-hostname --temp   # temporary only (reboot reverts)
 
 Examples:
-  curl https://sh.wss.moe/hostname | sudo bash my-server-01
-  curl https://sh.wss.moe/hostname | sudo bash cloud-node --temp
+  sudo bash <(curl -fsS https://sh.wss.moe/hostname) my-server-01
+  sudo bash <(curl -fsS https://sh.wss.moe/hostname) cloud-node --temp
 
 Features:
   - Default: Permanent change (updates /etc/hostname and /etc/hosts)

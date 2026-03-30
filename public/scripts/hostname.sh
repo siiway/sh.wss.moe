@@ -9,11 +9,11 @@ echo ""
 
 if [ $# -eq 0 ]; then
   echo "Usage:"
-  echo "  curl https://sh.wss.moe/hostname | sudo bash new-hostname"
-  echo "  curl https://sh.wss.moe/hostname | sudo bash -s -- new-hostname --temp   # temporary change only (lost after reboot)"
+  echo "  sudo bash <(curl -fsS https://sh.wss.moe/hostname) new-hostname"
+  echo "  sudo bash <(curl -fsS https://sh.wss.moe/hostname) new-hostname --temp   # temporary change only (lost after reboot)"
   echo ""
   echo "Examples:"
-  echo "  curl https://sh.wss.moe/hostname | sudo bash my-server-01"
+  echo "  sudo bash <(curl -fsS https://sh.wss.moe/hostname) my-server-01"
   exit 1
 fi
 

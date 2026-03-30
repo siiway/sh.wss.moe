@@ -1,36 +1,36 @@
 sh.wss.moe - Quick Scripts
-Help for a script: curl https://sh.wss.moe/<NAME>.help
-Append parameter: ... | bash -s -- <PARAMS>
+Help for a script: curl -fsS https://sh.wss.moe/<NAME>.help
+Append parameter: bash <(curl -fsS https://sh.wss.moe/<NAME>) [PARAMS]
 Available scripts (updated 2026-03-06):
 
 # System Related
-curl https://sh.wss.moe/hostname | bash <hostname>   # Change Hostname [--temp]
-curl https://sh.wss.moe/ps1 | bash   # Bashrc PS1 | [--git] [--no-newline]
-curl https://sh.wss.moe/nosnap | sudo bash   # Remove & block snap
-curl https://sh.wss.moe/swap | sudo bash   # Swapfile [size] [path] [swappiness]
-curl https://sh.wss.moe/bbr | sudo bash   # Enable TCP BBR [--bbr-only]
+bash <(curl -fsS https://sh.wss.moe/hostname) <hostname>   # Change Hostname [--temp]
+bash <(curl -fsS https://sh.wss.moe/ps1)   # Bashrc PS1 | [--git] [--no-newline]
+sudo bash <(curl -fsS https://sh.wss.moe/nosnap)   # Remove & block snap
+sudo bash <(curl -fsS https://sh.wss.moe/swap)   # Swapfile [size] [path] [swappiness]
+sudo bash <(curl -fsS https://sh.wss.moe/bbr)   # Enable TCP BBR [--bbr-only]
 
 # Programming Languages
-curl https://sh.wss.moe/node | bash   # Node.js via nvm | [version]
-curl https://sh.wss.moe/pnpm | bash   # pnpm | [--no-mirror]
-curl https://sh.wss.moe/pm2 | bash   # PM2
-curl https://sh.wss.moe/uv | bash   # uv + python | [version]
+bash <(curl -fsS https://sh.wss.moe/node)   # Node.js via nvm | [version]
+bash <(curl -fsS https://sh.wss.moe/pnpm)   # pnpm | [--no-mirror]
+bash <(curl -fsS https://sh.wss.moe/pm2)   # PM2
+bash <(curl -fsS https://sh.wss.moe/uv)   # uv + python | [version]
 
 # Prerequirements
-curl https://sh.wss.moe/flatpak | sudo bash   # Flatpak + Flathub
-curl https://sh.wss.moe/fuse | sudo bash   # AppImage FUSE
+sudo bash <(curl -fsS https://sh.wss.moe/flatpak)   # Flatpak + Flathub
+sudo bash <(curl -fsS https://sh.wss.moe/fuse)   # AppImage FUSE
 
 # Server
-curl https://sh.wss.moe/cfd | sudo bash   # Cloudflared | [--skip-fix]
-curl https://sh.wss.moe/caddy | sudo bash   # Caddy
-curl https://sh.wss.moe/pgsql | sudo bash   # PostgreSQL | [--db <database> --user <username>]
+sudo bash <(curl -fsS https://sh.wss.moe/cfd)   # Cloudflared | [--skip-fix]
+sudo bash <(curl -fsS https://sh.wss.moe/caddy)   # Caddy
+sudo bash <(curl -fsS https://sh.wss.moe/pgsql)   # PostgreSQL | [--db <database> --user <username>]
 
 # Desktop
-curl https://sh.wss.moe/firefox | sudo bash   # Firefox | [--no-gnome]
-curl https://sh.wss.moe/thunderbird | sudo bash   # Thunderbird | [--no-gnome]
-curl https://sh.wss.moe/syncthing | sudo bash   # Syncthing official
-curl https://sh.wss.moe/thefuck | sudo bash   # thefuck
-curl https://sh.wss.moe/waylyrics | sudo bash   # Waylyrics
-curl https://sh.wss.moe/bottles | bash   # Bottles flatpak
+sudo bash <(curl -fsS https://sh.wss.moe/firefox)   # Firefox | [--no-gnome]
+sudo bash <(curl -fsS https://sh.wss.moe/thunderbird)   # Thunderbird | [--no-gnome]
+sudo bash <(curl -fsS https://sh.wss.moe/syncthing)   # Syncthing official
+sudo bash <(curl -fsS https://sh.wss.moe/thefuck)   # thefuck
+sudo bash <(curl -fsS https://sh.wss.moe/waylyrics)   # Waylyrics
+bash <(curl -fsS https://sh.wss.moe/bottles)   # Bottles flatpak
 
 hosted by wyf9, contact: https://wyf9.top/c

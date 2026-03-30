@@ -1,8 +1,8 @@
 Thunderbird from Mozilla PPA
 
 Usage:
-  curl https://sh.wss.moe/thunderbird | sudo bash
-  curl https://sh.wss.moe/thunderbird | sudo bash -s -- --no-gnome   # skip GNOME integration
+  sudo bash <(curl -fsS https://sh.wss.moe/thunderbird)
+  sudo bash <(curl -fsS https://sh.wss.moe/thunderbird) --no-gnome   # skip GNOME integration
 
 Features:
   Adds PPA only if missing

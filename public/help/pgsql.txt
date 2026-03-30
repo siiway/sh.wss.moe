@@ -1,8 +1,8 @@
 PostgreSQL One-Click Installer
 
 Usage:
-curl https://sh.wss.moe/pgsql | sudo bash
-curl https://sh.wss.moe/pgsql | sudo bash -s -- --db <dbname> --user <username>
+sudo bash <(curl -fsS https://sh.wss.moe/pgsql)
+sudo bash <(curl -fsS https://sh.wss.moe/pgsql) --db <dbname> --user <username>
 
 Features / Notes:
 * Installs PostgreSQL + contrib from official repositories

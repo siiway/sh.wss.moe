@@ -1,9 +1,9 @@
 uv (Fast Python Tool) Installation
 
 Usage:
-  curl https://sh.wss.moe/uv | bash
-  curl https://sh.wss.moe/uv | bash 3.13     # also install Python 3.13
-  curl https://sh.wss.moe/uv | bash 3.12     # install Python 3.12, etc.
+  bash <(curl -fsS https://sh.wss.moe/uv)
+  bash <(curl -fsS https://sh.wss.moe/uv) 3.13     # also install Python 3.13
+  bash <(curl -fsS https://sh.wss.moe/uv) 3.12     # install Python 3.12, etc.
 
 Features:
   - Installs uv via official script

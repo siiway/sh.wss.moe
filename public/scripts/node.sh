@@ -11,7 +11,7 @@ VERSION=${1:-25}
 
 command -v curl >/dev/null || { echo "Missing curl."; exit 1; }
 
-curl https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+bash <(curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh)
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"

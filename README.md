@@ -6,7 +6,7 @@
 
 ```bash
 # 推荐写法（大多数需要 root 权限的脚本）
-curl https://sh.wss.moe/firefox | sudo bash
+sudo bash <(curl -fsS https://sh.wss.moe/firefox)
 
 # 查看帮助（任意一种写法都行）
 curl https://sh.wss.moe/firefox.help

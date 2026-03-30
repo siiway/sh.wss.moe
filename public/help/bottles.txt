@@ -1,7 +1,7 @@
 Bottles Flatpak Installation & Permissions
 
 Usage:
-  curl https://sh.wss.moe/bottles | bash
+  bash <(curl -fsS https://sh.wss.moe/bottles)
 
 Features:
   - Installs Bottles from Flathub if not present
