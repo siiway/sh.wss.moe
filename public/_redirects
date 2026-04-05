@@ -1,3 +1,7 @@
+# FAQ
+/faq                    https://gist.github.com/wyf9/19c647f0249562d4ea2a0632ade2e08d
+/faq.html               https://gist.github.com/wyf9/19c647f0249562d4ea2a0632ade2e08d
+
 # Some short aliases (optional, can be extended)
 /ff                     /scripts/firefox.sh     200
 /cloudflared            /scripts/cfd.sh         200
