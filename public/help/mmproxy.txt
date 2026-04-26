@@ -4,9 +4,9 @@ Usage:
   bash <(curl -fsS https://sh.wss.moe/mmproxy)
 
 Features:
-  Installs mmproxy binary to /usr/local/bin/mmproxy
+  Builds mmproxy from source and installs /usr/local/bin/mmproxy
   mmproxy converts PROXY protocol to real source IP TCP connections
 
 Requires: sudo
-Pre-dependency: wget
+Pre-dependency: git
 From: https://github.com/cloudflare/mmproxy
