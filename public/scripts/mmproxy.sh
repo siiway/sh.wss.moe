@@ -15,7 +15,7 @@ trap 'rm -rf "$TMPDIR"' EXIT
 cd "$TMPDIR"
 mkdir mmproxy
 cd mmproxy
-curl -sSL https://github.com/SiiWay/mmproxy/releases/latest/download/mmproxy
+curl -sSL -o mmproxy https://github.com/SiiWay/mmproxy/releases/latest/download/mmproxy
 
 sudo mv mmproxy /usr/local/bin/mmproxy
 sudo chmod +x /usr/local/bin/mmproxy
