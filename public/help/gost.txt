@@ -1,0 +1,16 @@
+gost Installer (Linux)
+
+Usage:
+  sudo bash <(curl -fsS https://sh.wss.moe/gost)
+  sudo bash <(curl -fsS https://sh.wss.moe/gost) amd64 --no-verify
+
+Features / Notes:
+  - Fetches latest stable release tag from GitHub API
+  - Linux only
+  - Auto-detects architecture by default (arg1=auto)
+  - You can override arch with arg1, such as amd64/arm64/armv7/mipsle_softfloat
+  - Verifies SHA256 using release checksums.txt by default (arg2=--verify)
+  - Use --no-verify to skip checksum verification
+  - Installs binary to /usr/local/bin/gost
+
+Requires: sudo
