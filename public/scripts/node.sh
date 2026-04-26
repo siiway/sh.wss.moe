@@ -7,6 +7,13 @@ echo "Help: curl https://sh.wss.moe/node.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 
+if ! command -v apt >/dev/null || ! grep -qE "(ID_LIKE.*debian|ID.*(debian|ubuntu))" /etc/os-release 2>/dev/null; then
+  echo "This script requires a Debian-based system (Ubuntu, Debian, etc.) for libatomic1 installation."
+  echo "For other systems, please refer to the official Node.js installation guide: https://nodejs.org/"
+  echo "NVM official script: https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh"
+  exit 1
+fi
+
 VERSION=${1:-25}
 
 command -v curl >/dev/null || { echo "Missing curl."; exit 1; }

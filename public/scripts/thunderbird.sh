@@ -7,6 +7,12 @@ echo "Help: curl https://sh.wss.moe/thunderbird.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 
+if ! command -v apt >/dev/null || ! grep -qE "(ID_LIKE.*debian|ID.*(debian|ubuntu))" /etc/os-release 2>/dev/null; then
+  echo "This script requires a Debian-based system (Ubuntu, Debian, etc.)."
+  echo "For other systems, please refer to the official Thunderbird installation guide: https://www.thunderbird.net/"
+  exit 1
+fi
+
 PPA_LIST="/etc/apt/sources.list.d/mozillateam-ubuntu-ppa-$(lsb_release -cs).list"
 PREF_FILE="/etc/apt/preferences.d/mozillateamppa.pref"
 
