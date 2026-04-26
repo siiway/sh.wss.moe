@@ -13,5 +13,6 @@ if ! grep -q "thefuck --alias" ~/.bashrc; then
   echo 'eval $(thefuck --alias)' >> ~/.bashrc
 fi
 
+source ~/.bashrc
+
 echo "Done."
-echo "Run: source ~/.bashrc"

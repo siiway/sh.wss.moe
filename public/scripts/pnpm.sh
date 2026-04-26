@@ -21,4 +21,6 @@ fi
 
 pnpm setup
 
+source ~/.bashrc
+
 echo "Done."

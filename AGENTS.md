@@ -1,7 +1,7 @@
 你现在帮我维护 sh.wss.moe 项目。
 
 核心要求：
-1. 脚本文件放在 /scripts/xxx.sh，帮助文件放在 /help/xxx.txt
+1. 脚本文件放在 public/scripts/xxx.sh，帮助文件放在 public/help/xxx.txt
 2. 脚本第一行：#!/usr/bin/env bash
    第二行：set -euo pipefail
    第三行起：# Help: curl https://sh.wss.moe/xxx.help
@@ -17,11 +17,11 @@
    echo "Contact: https://wyf9.top/c"
    echo ""
 8. 脚本结尾统一 echo "Done."
-9. 帮助文件（/help/xxx.txt）全部用英文，格式：
+9. 帮助文件（public/help/xxx.txt）全部用英文，格式：
    Title
    Usage:
-     curl https://sh.wss.moe/xxx | [sudo] bash
-     curl https://sh.wss.moe/xxx | [sudo] bash -s -- [args]
+     bash <(curl -fsS https://sh.wss.moe/xxx)
+     bash <(curl -fsS https://sh.wss.moe/xxx) [args]
    Features / Notes:
      - ...
    Requires: sudo (如果需要)
@@ -29,6 +29,7 @@
 11. 所有换加速源（如 pnpm registry）、gnome 支持包（如 *-gnome-support）必须做成可选项，默认开启，参数如 --no-xxx 跳过
 12. 帮助文件保持简洁，突出用法、特性、可选项
 13. curl 后必须使用带 https:// 的 url (因为站点开启了强制 https)
+14. 对于需要刷新环境的脚本，直接在脚本末尾应用环境更改（如 source ~/.bashrc），让用户省去手动操作
 
 现在请为 [具体软件/功能名称] 创作脚本 scripts/xxx.sh 和 help/xxx.txt，
 基于以下安装步骤/需求：

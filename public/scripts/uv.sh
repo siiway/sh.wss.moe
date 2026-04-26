@@ -26,7 +26,3 @@ fi
 
 echo ""
 echo "Done."
-echo "uv is now available. Restart terminal or source your profile if PATH not updated."
-if [ -n "$PYTHON_VERSION" ]; then
-  echo "Python $PYTHON_VERSION has been installed via uv."
-fi

@@ -92,9 +92,7 @@ fi
 } >> "$BASHRC"
 
 echo "PS1 has been updated in ~/.bashrc"
-echo "To apply immediately:"
-echo "  source ~/.bashrc"
-echo "  or open a new terminal."
+source ~/.bashrc
 echo ""
 echo "Current mode: $( [ "$USE_NEWLINE" -eq 1 ] && echo "multi-line" || echo "single-line" ) + $( [ "$USE_GIT" -eq 1 ] && echo "with Git" || echo "no Git" )"
 echo "Done."

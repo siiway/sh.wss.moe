@@ -23,4 +23,3 @@ nvm alias default "$VERSION"
 sudo apt install libatomic1 -y || true
 
 echo "Done."
-echo "Restart terminal or source profile"

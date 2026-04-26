@@ -4,9 +4,9 @@ Usage:
   bash <(curl -fsS https://sh.wss.moe/pm2)
 
 Features:
-  Installs PM2 (user-scope) via pnpm
+  Installs PM2 (user-scope) via bun/pnpm/npm (tries in order)
 
 No sudo required for install
-Pre-dependency: pnpm
+Pre-dependency: bun, pnpm, or npm
 From: https://pm2.keymetrics.io/docs/usage/quick-start/
 Ref: https://wyf9.top/p/linux-newinst#pm2

@@ -61,8 +61,8 @@ echo ""
 
 if [ "$MODE" != "--temp" ] && [ "$MODE" != "temp" ]; then
   echo "Permanent change written to files. Reboot for full effect."
+  source /etc/profile
   echo "To apply immediately:"
-  echo "  source /etc/profile   or open a new terminal"
   echo "  or reboot: sudo reboot"
 else
   echo "This is a temporary change. It will revert after reboot."
