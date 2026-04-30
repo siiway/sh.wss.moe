@@ -15,13 +15,19 @@ if ! command -v apt >/dev/null || ! grep -qE "(ID_LIKE.*debian|ID.*(debian|ubunt
 fi
 
 VERSION=${1:-25}
+echo "Node version: $VERSION"
 
 command -v curl >/dev/null || { echo "Missing curl."; exit 1; }
 
 bash <(curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh)
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  . "$NVM_DIR/nvm.sh"
+else
+  echo "nvm install finished but $NVM_DIR/nvm.sh was not found."
+  exit 1
+fi
 
 nvm install "$VERSION"
 nvm use "$VERSION"

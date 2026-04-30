@@ -21,6 +21,18 @@ fi
 
 pnpm setup
 
-source ~/.bashrc
+if [ -d "$HOME/.local/share/pnpm" ]; then
+  export PNPM_HOME="$HOME/.local/share/pnpm"
+elif [ -d "$HOME/.pnpm" ]; then
+  export PNPM_HOME="$HOME/.pnpm"
+fi
+
+if [ -n "${PNPM_HOME:-}" ]; then
+  case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+  esac
+  echo "Applied PNPM_HOME for current session: $PNPM_HOME"
+fi
 
 echo "Done."

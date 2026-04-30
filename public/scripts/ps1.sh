@@ -92,7 +92,10 @@ fi
 } >> "$BASHRC"
 
 echo "PS1 has been updated in ~/.bashrc"
-source ~/.bashrc
+if [ "$USE_GIT" -eq 1 ]; then
+  eval "$GIT_PARSE_FUNC"
+fi
+export PS1="$PS1_VALUE"
 echo ""
 echo "Current mode: $( [ "$USE_NEWLINE" -eq 1 ] && echo "multi-line" || echo "single-line" ) + $( [ "$USE_GIT" -eq 1 ] && echo "with Git" || echo "no Git" )"
 echo "Done."

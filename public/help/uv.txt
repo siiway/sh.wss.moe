@@ -7,7 +7,7 @@ Usage:
 
 Features:
   - Installs uv via official script
-  - Adds uv to PATH (may need terminal restart)
+  - Applies uv PATH in current script run
   - Default: Only installs uv, no Python version
   - Pass a version (e.g. 3.13) as first argument to also install that Python version
 
