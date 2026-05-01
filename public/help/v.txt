@@ -1,0 +1,18 @@
+v.sh installer
+
+Usage:
+  bash <(curl -fsS https://sh.wss.moe/v.sh)
+  bash <(curl -fsS https://sh.wss.moe/v.sh) /usr/local/bin
+
+Features / Notes:
+  ◦ Installs the v.sh utility into /usr/local/bin or the directory you provide.
+  ◦ The installed utility supports:
+    - v.sh sink NAME
+    - v.sh mic NAME
+    - v.sh del NAME
+    - v.sh rm NAME
+  ◦ Prevents duplicate names across sink and mic.
+  ◦ Stores module IDs in /tmp/viraudio to support safe removal.
+  ◦ Uses PipeWire / PulseAudio pactl module load/unload.
+
+Requires: sudo
