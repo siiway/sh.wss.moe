@@ -5,7 +5,7 @@ Usage:
   bash <(curl -fsS https://sh.wss.moe/v.sh) /usr/local/bin
 
 Features / Notes:
-  ◦ Installs the v.sh utility into /usr/local/bin or the directory you provide.
+  ◦ Installs the v.sh utility from GitHub Gist into /usr/local/bin or the directory you provide.
   ◦ The installed utility supports:
     - v.sh sink NAME
     - v.sh mic NAME
@@ -16,3 +16,5 @@ Features / Notes:
   ◦ Uses PipeWire / PulseAudio pactl module load/unload.
 
 Requires: sudo
+From: https://gist.github.com/wyf9/ff12240ae023da0a068f2466968e3681
+Ref: https://wyf9.top/p/virtual-sink
