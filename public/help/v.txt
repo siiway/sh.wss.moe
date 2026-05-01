@@ -10,7 +10,8 @@ Features / Notes:
     - v.sh sink NAME
     - v.sh mic NAME
     - v.sh del NAME
-    - v.sh rm NAME
+      * Alias: rm
+      * NAME can be --all to remove all created virtual sink/mic, or add --sink / --mic to specify a type.
   ◦ Prevents duplicate names across sink and mic.
   ◦ Stores module IDs in /tmp/viraudio to support safe removal.
   ◦ Uses PipeWire / PulseAudio pactl module load/unload.

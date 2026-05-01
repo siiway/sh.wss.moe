@@ -4,6 +4,7 @@ set -euo pipefail
 
 echo "=== v.sh installer ==="
 echo "Help: curl https://sh.wss.moe/v.help"
+echo "Ref: https://wyf9.top/p/virtual-sink"
 echo "Contact: https://wyf9.top/c"
 echo ""
 
