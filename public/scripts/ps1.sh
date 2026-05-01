@@ -28,6 +28,9 @@ for arg in "$@"; do
 done
 
 BASHRC="$HOME/.bashrc"
+WSSMOE_DIR="$HOME/.wssmoe"
+ENV_FILE="$WSSMOE_DIR/ps1.env"
+SOURCE_LINE='[ -f "$HOME/.wssmoe/ps1.env" ] && . "$HOME/.wssmoe/ps1.env"'
 
 # Stable Git parse function
 GIT_PARSE_FUNC='
@@ -75,23 +78,21 @@ else
   fi
 fi
 
-# Backup .bashrc
-if [ -f "$BASHRC" ]; then
-  cp "$BASHRC" "${BASHRC}.bak-$(date +%Y%m%d-%H%M%S)"
-  echo "Backed up $BASHRC to ${BASHRC}.bak-$(date +%Y%m%d-%H%M%S)"
-fi
-
-# Append new config
+mkdir -p "$WSSMOE_DIR"
 {
-  echo ""
-  echo "# Custom PS1 added by https://sh.wss.moe/ps1 (stable git parse)"
+  echo "# Managed by https://sh.wss.moe/ps1"
   if [ "$USE_GIT" -eq 1 ]; then
     echo "$GIT_PARSE_FUNC"
   fi
-  echo "PS1='$PS1_VALUE'"
-} >> "$BASHRC"
+  printf "PS1='%s'\n" "$PS1_VALUE"
+} > "$ENV_FILE"
 
-echo "PS1 has been updated in ~/.bashrc"
+touch "$BASHRC"
+if ! grep -Fqx "$SOURCE_LINE" "$BASHRC"; then
+  echo "$SOURCE_LINE" >> "$BASHRC"
+fi
+
+echo "PS1 has been written to ~/.wssmoe/ps1.env and linked in ~/.bashrc"
 if [ "$USE_GIT" -eq 1 ]; then
   eval "$GIT_PARSE_FUNC"
 fi

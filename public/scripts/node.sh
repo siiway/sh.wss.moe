@@ -35,4 +35,6 @@ nvm alias default "$VERSION"
 
 sudo apt install libatomic1 -y || true
 
+echo "Run this to apply environment in your current shell:"
+echo "source ~/.bashrc"
 echo "Done."

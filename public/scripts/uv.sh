@@ -15,14 +15,16 @@ echo "Installing uv..."
 
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-export PATH="$HOME/.local/bin:$PATH"
+UV_BIN="$HOME/.local/bin/uv"
 
 if [ -n "$PYTHON_VERSION" ]; then
   echo "Installing Python $PYTHON_VERSION..."
-  uv python install "$PYTHON_VERSION"
+  "$UV_BIN" python install "$PYTHON_VERSION"
 else
   echo "Python installation skipped (execute this if you want: uv python install 3.13)"
 fi
 
+echo "Run this to apply environment in your current shell:"
+echo "source ~/.bashrc"
 echo ""
 echo "Done."

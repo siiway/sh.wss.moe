@@ -5,7 +5,8 @@ Usage:
 
 Features:
   Installs thefuck
-  Adds alias to ~/.bashrc if missing
+  Writes alias env to ~/.wssmoe/thefuck.env
+  Adds one loader line to ~/.bashrc if missing
 
 Requires: sudo
 From: https://github.com/nvbn/thefuck?tab=readme-ov-file#installation

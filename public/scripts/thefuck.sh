@@ -15,8 +15,19 @@ fi
 
 sudo apt install -y thefuck
 
-if ! grep -q "thefuck --alias" ~/.bashrc; then
-  echo 'eval $(thefuck --alias)' >> ~/.bashrc
+BASHRC="$HOME/.bashrc"
+WSSMOE_DIR="$HOME/.wssmoe"
+ENV_FILE="$WSSMOE_DIR/thefuck.env"
+SOURCE_LINE='[ -f "$HOME/.wssmoe/thefuck.env" ] && . "$HOME/.wssmoe/thefuck.env"'
+
+mkdir -p "$WSSMOE_DIR"
+cat > "$ENV_FILE" <<'EOF'
+eval "$(thefuck --alias)"
+EOF
+
+touch "$BASHRC"
+if ! grep -Fqx "$SOURCE_LINE" "$BASHRC"; then
+  echo "$SOURCE_LINE" >> "$BASHRC"
 fi
 
 eval "$(thefuck --alias)"

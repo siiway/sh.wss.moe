@@ -6,7 +6,7 @@ Usage:
 
 Features:
   Installs nvm and specified Node version (default 25)
-  Loads nvm in current script run (no manual source needed)
+  After install, run: source ~/.bashrc
 
 No sudo required
 Pre-dependency: curl

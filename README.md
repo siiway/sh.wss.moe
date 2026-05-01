@@ -6,14 +6,16 @@
 
 ```bash
 # 推荐写法（大多数需要 root 权限的脚本）
-sudo bash <(curl -fsS https://sh.wss.moe/firefox)
+sudo bash <(curl -fsS sh.wss.moe/firefox)
+
+# 不需要 root 的脚本
+bash <(curl -fsS sh.wss.moe/ps1)
+
+# 或者换一种执行方式?
+curl -fsS sh.wss.moe/uv | bash -s
 
 # 查看帮助（任意一种写法都行）
 curl https://sh.wss.moe/firefox.help
 curl https://sh.wss.moe/help/firefox
 curl https://sh.wss.moe/help/firefox.txt
 ```
-
-## AI Instructions
-
-见 [`AI.md`](./AI.md).
