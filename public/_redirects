@@ -19,8 +19,9 @@
 
 /help/*                 /help/:splat.txt        200
 
-# Support typing .sh explicitly
+# Support typing .sh and .html explicitly
 /*.sh                   /scripts/:splat.sh      200
+/*.html                 /:splat.html             200
 
 # Root alias →  real script
 /*                      /scripts/:splat.sh      200
