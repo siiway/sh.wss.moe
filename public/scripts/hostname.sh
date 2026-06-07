@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl https://sh.wss.moe/hostname.help
+# Help: curl sh.wss.moe/hostname.help
 
 echo "=== Change Hostname ==="
-echo "Help: curl https://sh.wss.moe/hostname.help"
+echo "Help: curl sh.wss.moe/hostname.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 
 if [ $# -eq 0 ]; then
   echo "Usage:"
-  echo "  sudo bash <(curl -fsS https://sh.wss.moe/hostname) new-hostname"
-  echo "  sudo bash <(curl -fsS https://sh.wss.moe/hostname) new-hostname --temp   # temporary change only (lost after reboot)"
+  echo "  sudo bash <(curl -fsSL sh.wss.moe/hostname) new-hostname"
+  echo "  sudo bash <(curl -fsSL sh.wss.moe/hostname) new-hostname --temp   # temporary change only (lost after reboot)"
   echo ""
   echo "Examples:"
-  echo "  sudo bash <(curl -fsS https://sh.wss.moe/hostname) my-server-01"
+  echo "  sudo bash <(curl -fsSL sh.wss.moe/hostname) my-server-01"
   exit 1
 fi
 

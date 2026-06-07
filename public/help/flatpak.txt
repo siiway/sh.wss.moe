@@ -1,7 +1,8 @@
 Flatpak + Flathub Setup
 
 Usage:
-  sudo bash <(curl -fsS https://sh.wss.moe/flatpak)
+  curl -fsSL sh.wss.moe/flatpak | sudo bash
+  sudo bash <(curl -fsSL sh.wss.moe/flatpak)
 
 Features:
   Installs Flatpak and adds Flathub repository

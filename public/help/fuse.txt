@@ -1,7 +1,8 @@
 AppImage FUSE Support (Ubuntu 24.04+)
 
 Usage:
-  sudo bash <(curl -fsS https://sh.wss.moe/fuse)
+  curl -fsSL sh.wss.moe/fuse | sudo bash
+  sudo bash <(curl -fsSL sh.wss.moe/fuse)
 
 Features:
   Installs libfuse2t64 to fix AppImage execution issues

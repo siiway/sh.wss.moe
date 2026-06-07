@@ -1,8 +1,10 @@
 Node.js via nvm
 
 Usage:
-  bash <(curl -fsS https://sh.wss.moe/node)
-  bash <(curl -fsS https://sh.wss.moe/node) 20   # custom version
+  curl -fsSL sh.wss.moe/node | bash
+  bash <(curl -fsSL sh.wss.moe/node)
+  curl -fsSL sh.wss.moe/node | bash -s -- 20   # custom version
+  bash <(curl -fsSL sh.wss.moe/node) 20   # custom version
 
 Features:
   Installs nvm and specified Node version (default 25)

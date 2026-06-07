@@ -1,7 +1,8 @@
 Syncthing (official stable repo)
 
 Usage:
-  sudo bash <(curl -fsS https://sh.wss.moe/syncthing)
+  curl -fsSL sh.wss.moe/syncthing | sudo bash
+  sudo bash <(curl -fsSL sh.wss.moe/syncthing)
 
 Features:
   Adds official repo and installs Syncthing

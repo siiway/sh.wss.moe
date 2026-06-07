@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Help: https://sh.wss.moe/pgsql.help
+# Help: sh.wss.moe/pgsql.help
 # Contact: https://wyf9.top/c
 
 echo "=== PostgreSQL One-Click Install Script ==="
-echo "Help:    https://sh.wss.moe/pgsql.help"
+echo "Help:    sh.wss.moe/pgsql.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 

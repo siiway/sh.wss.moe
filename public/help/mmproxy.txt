@@ -1,7 +1,8 @@
 mmproxy
 
 Usage:
-  bash <(curl -fsS https://sh.wss.moe/mmproxy)
+  curl -fsSL sh.wss.moe/mmproxy | bash
+  bash <(curl -fsSL sh.wss.moe/mmproxy)
 
 Features:
   Builds mmproxy from source and installs /usr/local/bin/mmproxy

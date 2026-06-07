@@ -1,8 +1,10 @@
 gost Installer (Linux)
 
 Usage:
-  sudo bash <(curl -fsS https://sh.wss.moe/gost)
-  sudo bash <(curl -fsS https://sh.wss.moe/gost) amd64 --no-verify
+  curl -fsSL sh.wss.moe/gost | sudo bash
+  sudo bash <(curl -fsSL sh.wss.moe/gost)
+  curl -fsSL sh.wss.moe/gost | sudo bash -s -- amd64 --no-verify
+  sudo bash <(curl -fsSL sh.wss.moe/gost) amd64 --no-verify
 
 Features / Notes:
   - Fetches latest stable release tag from GitHub API

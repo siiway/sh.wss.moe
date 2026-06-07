@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl https://sh.wss.moe/mmproxy.help
+# Help: curl sh.wss.moe/mmproxy.help
 
 echo "=== mmproxy Installation ==="
-echo "Help: curl https://sh.wss.moe/mmproxy.help"
+echo "Help: curl sh.wss.moe/mmproxy.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 

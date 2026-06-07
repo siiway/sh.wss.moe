@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl https://sh.wss.moe/bbr.help
+# Help: curl sh.wss.moe/bbr.help
 
 echo "=== Enable TCP BBR with Auto Buffer Tuning ==="
-echo "Help: curl https://sh.wss.moe/bbr.help"
+echo "Help: curl sh.wss.moe/bbr.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 
@@ -14,7 +14,7 @@ for arg in "$@"; do
   case "$arg" in
     --bbr-only) BBR_ONLY=1 ;;
     --help|-h)
-      echo "Usage: sudo bash <(curl -fsS https://sh.wss.moe/bbr) [OPTIONS]"
+      echo "Usage: sudo bash <(curl -fsSL sh.wss.moe/bbr) [OPTIONS]"
       echo "Options:"
       echo "  --bbr-only     Only enable core BBR (fq + bbr), skip buffer and other tunings"
       echo "  --help         Show this help"

@@ -1,7 +1,8 @@
 PM2 Process Manager
 
 Usage:
-  bash <(curl -fsS https://sh.wss.moe/pm2)
+  curl -fsSL sh.wss.moe/pm2 | bash
+  bash <(curl -fsSL sh.wss.moe/pm2)
 
 Features:
   Installs PM2 (user-scope) via bun/pnpm/npm (tries in order)

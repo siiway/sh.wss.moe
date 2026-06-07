@@ -1,9 +1,12 @@
 Add or Resize Swapfile (file-based only)
 
 Usage:
-  sudo bash <(curl -fsS https://sh.wss.moe/swap)
-  sudo bash <(curl -fsS https://sh.wss.moe/swap) 12G
-  sudo bash <(curl -fsS https://sh.wss.moe/swap) 8G /myswap 10
+  curl -fsSL sh.wss.moe/swap | sudo bash
+  sudo bash <(curl -fsSL sh.wss.moe/swap)
+  curl -fsSL sh.wss.moe/swap | sudo bash -s -- 12G
+  sudo bash <(curl -fsSL sh.wss.moe/swap) 12G
+  curl -fsSL sh.wss.moe/swap | sudo bash -s -- 8G /myswap 10
+  sudo bash <(curl -fsSL sh.wss.moe/swap) 8G /myswap 10
 
 Parameters:
   1. Size (default 4G)

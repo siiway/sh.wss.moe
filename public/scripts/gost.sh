@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl https://sh.wss.moe/gost.help
+# Help: curl sh.wss.moe/gost.help
 
 echo "=== gost Installer (Linux) ==="
-echo "Help: curl https://sh.wss.moe/gost.help"
+echo "Help: curl sh.wss.moe/gost.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 
@@ -79,7 +79,7 @@ if [[ "$ARCH_MODE" == "auto" ]]; then
     *)
       echo "Unsupported architecture from uname -m: $ARCH_RAW"
       echo "Use manual arch mode, for example:"
-      echo "sudo bash <(curl -fsS https://sh.wss.moe/gost) amd64"
+      echo "sudo bash <(curl -fsSL sh.wss.moe/gost) amd64"
       exit 1
       ;;
   esac
@@ -89,19 +89,41 @@ fi
 
 echo "Resolved asset arch: $ASSET_ARCH"
 
+fetch_json() {
+  local url="$1"
+  local desc="$2"
+  local max_retries=3
+  local retry=0
+  local output=""
+  while [[ $retry -lt $max_retries ]]; do
+    output="$(curl -fsSL "$url" 2>/dev/null)" && break
+    retry=$((retry + 1))
+    if [[ $retry -lt $max_retries ]]; then
+      echo "Retry $retry/$max_retries: $desc ..."
+      sleep 2
+    fi
+  done
+  if [[ -z "$output" ]]; then
+    echo "ERROR: Failed to fetch $desc after $max_retries attempts."
+    echo "URL: $url"
+    exit 1
+  fi
+  printf '%s\n' "$output"
+}
+
 LATEST_API_URL="https://api.github.com/repos/go-gost/gost/releases/latest"
-LATEST_JSON="$(curl -fsSL "$LATEST_API_URL")"
+LATEST_JSON="$(fetch_json "$LATEST_API_URL" "latest release info")"
 TAG="$(printf '%s\n' "$LATEST_JSON" | awk -F'"' '/"tag_name":/ { print $4; exit }')"
 
 if [[ -z "$TAG" || "${TAG#v}" == "$TAG" ]]; then
-  echo "Failed to get latest stable tag from GitHub API."
+  echo "ERROR: Failed to parse latest stable tag from GitHub API response."
   exit 1
 fi
 
 VERSION="${TAG#v}"
 FILE="gost_${VERSION}_linux_${ASSET_ARCH}.tar.gz"
 RELEASE_API_URL="https://api.github.com/repos/go-gost/gost/releases/tags/${TAG}"
-RELEASE_JSON="$(curl -fsSL "$RELEASE_API_URL")"
+RELEASE_JSON="$(fetch_json "$RELEASE_API_URL" "release tag $TAG")"
 
 URL="$(printf '%s\n' "$RELEASE_JSON" | awk -v file="$FILE" -F'"' '/"browser_download_url":/ { if (index($4, file) > 0) { print $4; exit } }')"
 CHECKSUMS_URL="$(printf '%s\n' "$RELEASE_JSON" | awk -F'"' '/"browser_download_url":/ { if (index($4, "/checksums.txt") > 0) { print $4; exit } }')"
@@ -121,10 +143,10 @@ trap 'rm -rf "$TMP_DIR"' EXIT
 
 echo "Latest stable tag: $TAG"
 echo "Downloading: $URL"
-curl -fsSL "$URL" -o "$TMP_DIR/$FILE"
+curl -fsSL --retry 3 --retry-delay 2 "$URL" -o "$TMP_DIR/$FILE" || { echo "ERROR: Failed to download gost binary."; exit 1; }
 
 if [[ "$VERIFY_MODE" == "--verify" ]]; then
-  curl -fsSL "$CHECKSUMS_URL" -o "$TMP_DIR/checksums.txt"
+  curl -fsSL --retry 3 --retry-delay 2 "$CHECKSUMS_URL" -o "$TMP_DIR/checksums.txt" || { echo "ERROR: Failed to download checksums."; exit 1; }
   EXPECTED_SHA256="$(awk -v file="$FILE" '$2 == file { print $1; exit }' "$TMP_DIR/checksums.txt")"
   if [[ -z "$EXPECTED_SHA256" ]]; then
     echo "Checksum entry not found for $FILE."

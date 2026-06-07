@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl https://sh.wss.moe/ps1.help
+# Help: curl sh.wss.moe/ps1.help
 
 echo "=== Custom PS1 Prompt Setup ==="
-echo "Help: curl https://sh.wss.moe/ps1.help"
+echo "Help: curl sh.wss.moe/ps1.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 
@@ -16,7 +16,7 @@ for arg in "$@"; do
     --git)          USE_GIT=1 ;;
     --no-newline)   USE_NEWLINE=0 ;;
     --help|-h)
-      echo "Usage: bash <(curl -fsS https://sh.wss.moe/ps1) [OPTIONS]"
+      echo "Usage: bash <(curl -fsSL sh.wss.moe/ps1) [OPTIONS]"
       echo "Options:"
       echo "  --git          Enable Git branch and status in prompt"
       echo "  --no-newline   Use single-line prompt (no newline before \$)"
@@ -80,7 +80,7 @@ fi
 
 mkdir -p "$WSSMOE_DIR"
 {
-  echo "# Managed by https://sh.wss.moe/ps1"
+  echo "# Managed by sh.wss.moe/ps1"
   if [ "$USE_GIT" -eq 1 ]; then
     echo "$GIT_PARSE_FUNC"
   fi

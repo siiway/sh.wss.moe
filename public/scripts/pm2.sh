@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl https://sh.wss.moe/pm2.help
+# Help: curl sh.wss.moe/pm2.help
 
 echo "=== PM2 User Install ==="
-echo "Help: curl https://sh.wss.moe/pm2.help"
+echo "Help: curl sh.wss.moe/pm2.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 

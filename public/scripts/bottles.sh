@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-# Help: curl https://sh.wss.moe/bottles.help
+# Help: curl sh.wss.moe/bottles.help
 
 echo "=== Bottles Flatpak Installation & Permissions ==="
-echo "Help: curl https://sh.wss.moe/bottles.help"
+echo "Help: curl sh.wss.moe/bottles.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 

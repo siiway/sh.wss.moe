@@ -1,8 +1,10 @@
 v.sh installer
 
 Usage:
-  bash <(curl -fsS https://sh.wss.moe/v.sh)
-  bash <(curl -fsS https://sh.wss.moe/v.sh) /usr/local/bin
+  curl -fsSL sh.wss.moe/v.sh | bash
+  bash <(curl -fsSL sh.wss.moe/v.sh)
+  curl -fsSL sh.wss.moe/v.sh | bash -s -- /usr/local/bin
+  bash <(curl -fsSL sh.wss.moe/v.sh) /usr/local/bin
 
 Features / Notes:
   ◦ Installs the v.sh utility from GitHub Gist into /usr/local/bin or the directory you provide.
