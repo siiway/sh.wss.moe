@@ -27,11 +27,30 @@
    Features / Notes:
      - ...
    Requires: sudo (如果需要)
-10. 支持参数时使用 ${1:-default} 写法，并在前几行 echo 当前使用的参数值（如果合适）
+10. 支持参数时使用 loop 解析参数（优先），或 ${1:-default} 写法，并在前几行 echo 当前使用的参数值（如合适）
 11. 所有换加速源（如 pnpm registry）、gnome 支持包（如 *-gnome-support）必须做成可选项，默认开启，参数如 --no-xxx 跳过
 12. 帮助文件保持简洁，突出用法、特性、可选项
 13. curl 后不使用 https:// 前缀，直接用裸域名（如 sh.wss.moe/xxx），保证最大兼容性
 14. 对于需要刷新环境的脚本，直接在脚本末尾应用环境更改（如 source ~/.bashrc），让用户省去手动操作
+15. GitHub 相关脚本规范：
+    - 优先使用 releases/latest/download 直接链接，避免请求 API（更可靠）
+    - 如果必须用 API，使用 fetch_json() 函数，支持 retry + mirror fallback
+    - 所有 GitHub 脚本默认启用镜像（--mirror），可通过 --no-mirror 禁用
+    - 镜像站点：gh.1s.fan，映射规则：
+      - api.github.com → api.gh.1s.fan
+      - github.com (releases/download) → release-assets.gh.1s.fan
+      - github.com (git clone) → gh.1s.fan
+    - 下载函数统一用 download()，支持 --retry 3 --retry-delay 2
+    - 所有 curl 必须处理失败情况，禁止静默退出（echo ERROR + exit 1）
+    - 参数解析模板：
+      MIRROR=1
+      for arg in "$@"; do
+      case "$arg" in
+      --mirror) MIRROR=1 ;;
+      --no-mirror) MIRROR=0 ;;
+      esac
+      done
+16. index.html 维护：每个脚本占两行（普通写法 + pipe-based 写法），日期及时更新
 
 现在请为 [具体软件/功能名称] 创作脚本 scripts/xxx.sh 和 help/xxx.txt，
 基于以下安装步骤/需求：

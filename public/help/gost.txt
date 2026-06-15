@@ -2,9 +2,11 @@ gost Installer (Linux)
 
 Usage:
   curl -fsSL sh.wss.moe/gost | sudo bash
-  sudo bash <(curl -fsSL sh.wss.moe/gost)
   curl -fsSL sh.wss.moe/gost | sudo bash -s -- amd64 --no-verify
+  curl -fsSL sh.wss.moe/gost | sudo bash -s -- --no-mirror
+  sudo bash <(curl -fsSL sh.wss.moe/gost)
   sudo bash <(curl -fsSL sh.wss.moe/gost) amd64 --no-verify
+  sudo bash <(curl -fsSL sh.wss.moe/gost) --no-mirror
 
 Features / Notes:
   - Fetches latest stable release tag from GitHub API
@@ -14,5 +16,6 @@ Features / Notes:
   - Verifies SHA256 using release checksums.txt by default (arg2=--verify)
   - Use --no-verify to skip checksum verification
   - Installs binary to /usr/local/bin/gost
+  - Mirror enabled by default, use --no-mirror to disable (mirror: gh.1s.fan)
 
 Requires: sudo

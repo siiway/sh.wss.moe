@@ -2,12 +2,14 @@ dae - Transparent Proxy (daeuniverse)
 
 Usage:
   curl -fsSL sh.wss.moe/dae | sudo bash
-  curl -fsSL sh.wss.moe/dae | sudo bash -s -- arm64   # manual arch
+  curl -fsSL sh.wss.moe/dae | sudo bash -s -- amd64
+  curl -fsSL sh.wss.moe/dae | sudo bash -s -- --no-mirror
   sudo bash <(curl -fsSL sh.wss.moe/dae)
   sudo bash <(curl -fsSL sh.wss.moe/dae) arm64
+  sudo bash <(curl -fsSL sh.wss.moe/dae) --no-mirror
 
 Features / Notes:
-  - Fetches latest stable release from GitHub
+  - Downloads latest stable release directly (no API)
   - Auto-detects distro and installs via native package manager:
     - Debian/Ubuntu: .deb via dpkg
     - Fedora/RHEL: .rpm via dnf/yum
@@ -16,6 +18,7 @@ Features / Notes:
   - Auto-detects architecture with CPU feature detection:
     - x86_64: prefers v3_avx2 > v2_sse > base
   - Manual arch override: pass arch name as first argument
+  - Mirror enabled by default, use --no-mirror to disable
   - Supported archs: x86_64[_v2_sse|_v3_avx2] x86_32 arm64 armv7 armv6 armv5 riscv64 loongarch64 mips32[le] mips64[le] powerpc64[le] s390x
 
 Requires: sudo

@@ -2,11 +2,15 @@ mmproxy
 
 Usage:
   curl -fsSL sh.wss.moe/mmproxy | bash
+  curl -fsSL sh.wss.moe/mmproxy | bash -s -- --no-mirror
   bash <(curl -fsSL sh.wss.moe/mmproxy)
+  bash <(curl -fsSL sh.wss.moe/mmproxy) --no-mirror
 
 Features:
-  Builds mmproxy from source and installs /usr/local/bin/mmproxy
+  Downloads pre-built mmproxy binary from GitHub releases
+  Installs to /usr/local/bin/mmproxy
   mmproxy converts PROXY protocol to real source IP TCP connections
+  Mirror enabled by default, use --no-mirror to disable (mirror: gh.1s.fan)
 
 Requires: sudo
 Pre-dependency: curl

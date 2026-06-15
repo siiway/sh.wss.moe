@@ -7,12 +7,39 @@ echo "Help: curl sh.wss.moe/waylyrics.help"
 echo "Contact: https://wyf9.top/c"
 echo ""
 
+MIRROR=1
+for arg in "$@"; do
+case "$arg" in
+--mirror) MIRROR=1 ;;
+--no-mirror) MIRROR=0 ;;
+esac
+done
+
+echo "Mirror: $([[ $MIRROR -eq 1 ]] && echo on || echo off)"
+
 sudo apt install -y git rustup build-essential libssl-dev libgtk-4-dev libdbus-1-dev libmimalloc-dev gettext
 
 rustup update stable
 
+REPO_URL="https://github.com/waylyrics/waylyrics.git"
+MIRROR_REPO_URL="https://gh.1s.fan/waylyrics/waylyrics.git"
+
 mkdir -p gittemp && cd gittemp
-git clone https://github.com/waylyrics/waylyrics.git
+
+echo "Cloning waylyrics..."
+if ! git clone "$REPO_URL" 2>/dev/null; then
+if [[ $MIRROR -eq 1 ]]; then
+echo "Official failed, trying mirror..."
+if ! git clone "$MIRROR_REPO_URL"; then
+echo "ERROR: Failed to clone waylyrics."
+exit 1
+fi
+else
+echo "ERROR: Failed to clone waylyrics."
+exit 1
+fi
+fi
+
 cd waylyrics
 
 export WAYLYRICS_THEME_PRESETS_DIR=/usr/share/waylyrics/themes
