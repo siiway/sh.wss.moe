@@ -38,8 +38,7 @@
     - 所有 GitHub 脚本默认启用镜像（--mirror），可通过 --no-mirror 禁用
     - 镜像站点：gh.1s.fan，映射规则：
       - api.github.com → api.gh.1s.fan
-      - github.com (releases/download) → release-assets.gh.1s.fan
-      - github.com (git clone) → gh.1s.fan
+      - github.com → gh.1s.fan (直接替换域名，自动跟随重定向)
     - 下载函数统一用 download()，支持 --retry 3 --retry-delay 2
     - 所有 curl 必须处理失败情况，禁止静默退出（echo ERROR + exit 1）
     - 参数解析模板：

@@ -151,7 +151,7 @@ return 1
 
 if ! download "$URL" "$TMP_DIR/$FILE" "gost binary"; then
 if [[ $MIRROR -eq 1 ]]; then
-MIRROR_URL="$(echo "$URL" | sed 's|https://github\.com/|https://release-assets.gh.1s.fan/|')"
+MIRROR_URL="$(echo "$URL" | sed 's|https://github\.com/|https://gh.1s.fan/|')"
 echo "Official download failed, trying mirror: $MIRROR_URL"
 if ! download "$MIRROR_URL" "$TMP_DIR/$FILE" "gost binary (mirror)"; then
 echo "ERROR: Failed to download gost binary."
@@ -166,7 +166,7 @@ fi
 if [[ "$VERIFY_MODE" == "--verify" ]]; then
 if ! download "$CHECKSUMS_URL" "$TMP_DIR/checksums.txt" "checksums"; then
 if [[ $MIRROR -eq 1 ]]; then
-MIRROR_CHECKSUMS="$(echo "$CHECKSUMS_URL" | sed 's|https://github\.com/|https://release-assets.gh.1s.fan/|')"
+MIRROR_CHECKSUMS="$(echo "$CHECKSUMS_URL" | sed 's|https://github\.com/|https://gh.1s.fan/|')"
 echo "Official checksums failed, trying mirror..."
 if ! download "$MIRROR_CHECKSUMS" "$TMP_DIR/checksums.txt" "checksums (mirror)"; then
 echo "ERROR: Failed to download checksums."

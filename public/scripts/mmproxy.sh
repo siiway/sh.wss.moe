@@ -33,7 +33,7 @@ return 1
 }
 
 URL="https://github.com/SiiWay/mmproxy/releases/latest/download/mmproxy"
-MIRROR_URL="https://release-assets.gh.1s.fan/SiiWay/mmproxy/releases/latest/download/mmproxy"
+MIRROR_URL="https://gh.1s.fan/SiiWay/mmproxy/releases/latest/download/mmproxy"
 
 echo "Downloading mmproxy..."
 

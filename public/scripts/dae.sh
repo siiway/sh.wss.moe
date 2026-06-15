@@ -132,7 +132,7 @@ ASSET_NAME=""
 for ext in "${PKG_TYPE}" "tar.xz"; do
 file="dae-linux-${DAE_ARCH}.${ext}"
 url="https://github.com/daeuniverse/dae/releases/latest/download/${file}"
-mirror_url="https://release-assets.gh.1s.fan/daeuniverse/dae/releases/latest/download/${file}"
+mirror_url="https://gh.1s.fan/daeuniverse/dae/releases/latest/download/${file}"
 
 echo "Trying: ${file} ..."
 if dl "$url" "$TMP_DIR/$file" "$file"; then
