@@ -1,0 +1,192 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# Help: curl sh.wss.moe/dae.help
+
+echo "=== dae Installer ==="
+echo "Help: curl sh.wss.moe/dae.help"
+echo "Contact: https://wyf9.top/c"
+echo ""
+
+ARCH_MODE=${1:-auto}
+
+command -v curl >/dev/null || { echo "Missing curl, please install it first."; exit 1; }
+command -v tar >/dev/null || { echo "Missing tar, please install it first."; exit 1; }
+command -v sudo >/dev/null || { echo "Missing sudo, please install it first."; exit 1; }
+
+detect_pkg() {
+if command -v apt-get >/dev/null 2>&1; then
+echo "deb"
+elif command -v dnf >/dev/null 2>&1; then
+echo "rpm"
+elif command -v yum >/dev/null 2>&1; then
+echo "rpm"
+elif command -v pacman >/dev/null 2>&1; then
+echo "pkg.tar.zst"
+else
+echo "tar.xz"
+fi
+}
+
+detect_arch() {
+local arch_raw
+arch_raw="$(uname -m)"
+case "$arch_raw" in
+x86_64)
+if grep -q avx2 /proc/cpuinfo 2>/dev/null; then
+echo "x86_64_v3_avx2"
+elif grep -q sse4_2 /proc/cpuinfo 2>/dev/null; then
+echo "x86_64_v2_sse"
+else
+echo "x86_64"
+fi
+;;
+i386|i486|i586|i686)
+echo "x86_32"
+;;
+aarch64|arm64)
+echo "arm64"
+;;
+armv7l|armv7*)
+echo "armv7"
+;;
+armv6l|armv6*)
+echo "armv6"
+;;
+armv5l|armv5*)
+echo "armv5"
+;;
+riscv64)
+echo "riscv64"
+;;
+s390x)
+echo "s390x"
+;;
+loongarch64)
+echo "loongarch64"
+;;
+mips)
+echo "mips32"
+;;
+mipsel)
+echo "mips32le"
+;;
+mips64)
+echo "mips64"
+;;
+mips64el)
+echo "mips64le"
+;;
+ppc64)
+echo "powerpc64"
+;;
+ppc64le)
+echo "powerpc64le"
+;;
+*)
+echo ""
+;;
+esac
+}
+
+PKG_TYPE="$(detect_pkg)"
+echo "Package type: ${PKG_TYPE}"
+
+if [[ "$ARCH_MODE" == "auto" ]]; then
+DAE_ARCH="$(detect_arch)"
+if [[ -z "$DAE_ARCH" ]]; then
+echo "Unsupported architecture: $(uname -m)"
+echo "Use manual arch mode, for example:"
+echo "sudo bash <(curl -fsSL sh.wss.moe/dae) arm64"
+exit 1
+fi
+else
+DAE_ARCH="$ARCH_MODE"
+fi
+
+echo "Arch: ${DAE_ARCH}"
+
+LATEST_URL="https://api.github.com/repos/daeuniverse/dae/releases/latest"
+echo "Fetching latest release..."
+
+fetch_json() {
+local url="$1"
+local desc="$2"
+local max_retries=3
+local retry=0
+local output=""
+while [[ $retry -lt $max_retries ]]; do
+output="$(curl -fsSL "$url" 2>/dev/null)" && break
+retry=$((retry + 1))
+if [[ $retry -lt $max_retries ]]; then
+echo "Retry $retry/$max_retries: $desc ..."
+sleep 2
+fi
+done
+if [[ -z "$output" ]]; then
+echo "ERROR: Failed to fetch $desc after $max_retries attempts."
+exit 1
+fi
+printf '%s\n' "$output"
+}
+
+RELEASE_JSON="$(fetch_json "$LATEST_URL" "latest release")"
+TAG="$(printf '%s\n' "$RELEASE_JSON" | awk -F'"' '/"tag_name":/ { print $4; exit }')"
+
+if [[ -z "$TAG" || "${TAG#v}" == "$TAG" ]]; then
+echo "ERROR: Failed to parse latest tag."
+exit 1
+fi
+
+VERSION="${TAG#v}"
+echo "Latest version: ${VERSION}"
+
+FILE_PREFIX="dae-linux-${DAE_ARCH}"
+
+PREFERRED="dae-linux-${DAE_ARCH}.${PKG_TYPE}"
+
+ASSET_NAME=""
+for ext in "${PKG_TYPE}" "tar.xz"; do
+candidate="dae-linux-${DAE_ARCH}.${ext}"
+found="$(printf '%s\n' "$RELEASE_JSON" | awk -v file="$candidate" -F'"' '/"browser_download_url":/ { if (index($4, file) > 0 && $4 ~ "/" file "$") { print $4; exit } }')"
+if [[ -n "$found" ]]; then
+ASSET_NAME="$candidate"
+URL="$found"
+break
+fi
+done
+
+if [[ -z "$ASSET_NAME" ]]; then
+echo "No matching asset found for ${FILE_PREFIX}.${PKG_TYPE} or .tar.xz"
+echo "Available archs: x86_64[_v2_sse|_v3_avx2] x86_32 arm64 armv7 armv6 armv5 riscv64 loongarch64 mips32[le] mips64[le] powerpc64[le] s390x"
+exit 1
+fi
+
+echo "Downloading: ${ASSET_NAME}"
+TMP_DIR="$(mktemp -d)"
+trap 'rm -rf "$TMP_DIR"' EXIT
+
+curl -fsSL --retry 3 --retry-delay 2 "$URL" -o "$TMP_DIR/$ASSET_NAME" || { echo "ERROR: Failed to download dae."; exit 1; }
+
+echo "Installing..."
+case "$ASSET_NAME" in
+*.deb)
+sudo dpkg -i "$TMP_DIR/$ASSET_NAME"
+;;
+*.rpm)
+if command -v dnf >/dev/null 2>&1; then
+sudo dnf install -y "$TMP_DIR/$ASSET_NAME"
+else
+sudo yum install -y "$TMP_DIR/$ASSET_NAME"
+fi
+;;
+*.pkg.tar.zst)
+sudo pacman -U --noconfirm "$TMP_DIR/$ASSET_NAME"
+;;
+*.tar.xz)
+sudo tar -xJf "$TMP_DIR/$ASSET_NAME" -C /usr/local/bin dae
+sudo chmod +x /usr/local/bin/dae
+echo "Installed dae to /usr/local/bin/dae"
+;;
+esac
+
+echo "Done."
