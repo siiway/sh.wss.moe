@@ -5,10 +5,15 @@ Usage:
   bash <(curl -fsSL sh.wss.moe/node)
   curl -fsSL sh.wss.moe/node | bash -s -- 20   # custom version
   bash <(curl -fsSL sh.wss.moe/node) 20   # custom version
+  curl -fsSL sh.wss.moe/node | bash -s -- 20 --no-mirror   # disable mirror
 
 Features:
   Installs nvm and specified Node version (default 25)
   After install, run: source ~/.bashrc
+
+Options:
+  --mirror      Use gh.1s.fan to fetch nvm + git clone (default on)
+  --no-mirror   Disable mirror, fetch directly from GitHub
 
 No sudo required
 Pre-dependency: curl

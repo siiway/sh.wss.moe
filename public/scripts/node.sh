@@ -14,12 +14,42 @@ if ! command -v apt >/dev/null || ! grep -qE "(ID_LIKE.*debian|ID.*(debian|ubunt
   exit 1
 fi
 
-VERSION=${1:-25}
+MIRROR=1
+VERSION=25
+
+for arg in "$@"; do
+case "$arg" in
+--mirror) MIRROR=1 ;;
+--no-mirror) MIRROR=0 ;;
+*) VERSION="$arg" ;;
+esac
+done
+
 echo "Node version: $VERSION"
+echo "Mirror: $([[ $MIRROR -eq 1 ]] && echo on || echo off)"
+echo ""
 
 command -v curl >/dev/null || { echo "Missing curl."; exit 1; }
 
-bash <(curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh)
+NVM_INSTALL_URL="https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh"
+
+INSTALL_SH=""
+if [[ $MIRROR -eq 1 ]]; then
+  echo "Downloading nvm install script (mirror)..."
+  INSTALL_SH="$(curl -fsSL --retry 3 --retry-delay 2 "https://gh.1s.fan/${NVM_INSTALL_URL}")" || INSTALL_SH=""
+fi
+if [[ -z "$INSTALL_SH" ]]; then
+  echo "Downloading nvm install script..."
+  INSTALL_SH="$(curl -fsSL --retry 3 --retry-delay 2 "$NVM_INSTALL_URL")" || { echo "ERROR: Failed to download nvm install script."; exit 1; }
+fi
+
+if [[ $MIRROR -eq 1 ]]; then
+  # Inject reverse proxy in front of github clone/raw URLs (gh.1s.fan supports the prefix style)
+  INSTALL_SH="${INSTALL_SH//https:\/\/github.com\//https:\/\/gh.1s.fan\/https:\/\/github.com\/}"
+  INSTALL_SH="${INSTALL_SH//https:\/\/raw.githubusercontent.com\//https:\/\/gh.1s.fan\/https:\/\/raw.githubusercontent.com\/}"
+fi
+
+bash -c "$INSTALL_SH"
 
 export NVM_DIR="$HOME/.nvm"
 if [ -s "$NVM_DIR/nvm.sh" ]; then

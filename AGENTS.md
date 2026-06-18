@@ -36,9 +36,17 @@
     - 优先使用 releases/latest/download 直接链接，避免请求 API（更可靠）
     - 如果必须用 API，使用 fetch_json() 函数，支持 retry + mirror fallback
     - 所有 GitHub 脚本默认启用镜像（--mirror），可通过 --no-mirror 禁用
-    - 镜像站点：gh.1s.fan，映射规则：
-      - api.github.com → api.gh.1s.fan
-      - github.com → gh.1s.fan (直接替换域名，自动跟随重定向)
+     - 镜像站点：gh.1s.fan，映射规则：
+       - api.github.com → api.gh.1s.fan
+       - github.com → gh.1s.fan (直接替换域名，自动跟随重定向)
+       - 前缀式（用于 git clone / 第三方脚本注入）：在完整 URL 前加反代地址
+         https://gh.1s.fan/https://github.com/... 、https://gh.1s.fan/https://raw.githubusercontent.com/...
+     - 调用的外部脚本内部含 git clone（如 nvm install.sh）时：
+       先把脚本内容下载到变量，MIRROR=1 时用替换注入反代再执行，不直接管道执行：
+       INSTALL_SH="$(curl -fsSL "$URL")"
+       INSTALL_SH="${INSTALL_SH//https:\/\/github.com\//https:\/\/gh.1s.fan\/https:\/\/github.com\/}"
+       INSTALL_SH="${INSTALL_SH//https:\/\/raw.githubusercontent.com\//https:\/\/gh.1s.fan\/https:\/\/raw.githubusercontent.com\/}"
+       bash -c "$INSTALL_SH"
     - 下载函数统一用 download()，支持 --retry 3 --retry-delay 2
     - 所有 curl 必须处理失败情况，禁止静默退出（echo ERROR + exit 1）
     - 参数解析模板：

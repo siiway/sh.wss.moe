@@ -2,7 +2,7 @@ sh.wss.moe - Quick Scripts
 Help for a script: curl -fsSL sh.wss.moe/<NAME>.help
 Append parameter: bash <(curl -fsSL sh.wss.moe/<NAME>) [PARAMS]
 [/ no device? try pipe-based: curl -fsSL sh.wss.moe/<NAME> | bash [-s -- params] ]
-Available scripts (updated 2026-06-15):
+Available scripts (updated 2026-06-18):
 
 # System Related
 bash <(curl -fsSL sh.wss.moe/hostname) <hostname>   # Change Hostname [--temp]
@@ -15,7 +15,7 @@ sudo bash <(curl -fsSL sh.wss.moe/swap)   # Swapfile [size] [path] [swappiness]
 curl -fsSL sh.wss.moe/swap | sudo bash -s -- [size] [path] [swappiness]   # Swapfile
 
 # Programming Languages
-bash <(curl -fsSL sh.wss.moe/node)   # Node.js via nvm | [version]
+bash <(curl -fsSL sh.wss.moe/node)   # Node.js via nvm | [version] [--no-mirror]
 curl -fsSL sh.wss.moe/node | bash -s -- [version]   # Node.js via nvm
 bash <(curl -fsSL sh.wss.moe/pnpm)   # pnpm | [--no-mirror]
 curl -fsSL sh.wss.moe/pnpm | bash -s -- [--no-mirror]   # pnpm
