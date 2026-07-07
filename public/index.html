@@ -2,7 +2,7 @@ sh.wss.moe - Quick Scripts
 Help for a script: curl -fsSL sh.wss.moe/<NAME>.help
 Append parameter: bash <(curl -fsSL sh.wss.moe/<NAME>) [PARAMS]
 [/ no device? try pipe-based: curl -fsSL sh.wss.moe/<NAME> | bash [-s -- params] ]
-Available scripts (updated 2026-06-18):
+Available scripts (updated 2026-07-07):
 
 # System Related
 bash <(curl -fsSL sh.wss.moe/hostname) <hostname>   # Change Hostname [--temp]
@@ -43,6 +43,8 @@ sudo bash <(curl -fsSL sh.wss.moe/gost)   # gost latest stable | [arch] [--no-ve
 curl -fsSL sh.wss.moe/gost | sudo bash -s -- [arch] [--no-verify]   # gost
 sudo bash <(curl -fsSL sh.wss.moe/dae)   # dae transparent proxy | [arch]
 curl -fsSL sh.wss.moe/dae | sudo bash -s -- [arch]   # dae
+sudo bash <(curl -fsSL sh.wss.moe/mihomo)   # mihomo | [arch] [--alpha] [--no-mirror]
+curl -fsSL sh.wss.moe/mihomo | sudo bash -s -- [arch] [--alpha] [--no-mirror]   # mihomo
 
 # Desktop
 sudo bash <(curl -fsSL sh.wss.moe/firefox)   # Firefox | [--no-gnome]
