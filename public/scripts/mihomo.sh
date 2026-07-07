@@ -10,21 +10,32 @@ echo ""
 MIRROR=1
 ARCH_MODE="auto"
 FLAVOR_MODE="compatible"
+VERSION_TAG=""
 
-for arg in "$@"; do
-case "$arg" in
+while [[ $# -gt 0 ]]; do
+case "$1" in
 --mirror) MIRROR=1 ;;
 --no-mirror) MIRROR=0 ;;
 --compatible) FLAVOR_MODE="compatible" ;;
 --alpha) FLAVOR_MODE="alpha" ;;
---*) echo "Unknown option: $arg"; exit 1 ;;
-*) ARCH_MODE="$arg" ;;
+--version)
+if [[ $# -lt 2 ]]; then
+echo "Missing value for --version"
+exit 1
+fi
+VERSION_TAG="$2"
+shift
+;;
+--*) echo "Unknown option: $1"; exit 1 ;;
+*) ARCH_MODE="$1" ;;
 esac
+shift
 done
 
 echo "Mirror: $([[ $MIRROR -eq 1 ]] && echo on || echo off)"
 echo "Arch mode: $ARCH_MODE"
 echo "Flavor: $FLAVOR_MODE"
+echo "Version tag: ${VERSION_TAG:-latest stable}"
 
 if [[ "$(uname -s)" != "Linux" ]]; then
 echo "This script supports Linux only."
@@ -58,11 +69,15 @@ fi
 
 echo "Resolved asset arch: $ASSET_ARCH"
 
+RELEASE_TAG=""
 VERSION_URL="https://github.com/MetaCubeX/mihomo/releases/latest/download/version.txt"
 
-if [[ "$FLAVOR_MODE" == "alpha" ]]; then
-TAG="Prerelease-Alpha"
-VERSION_URL="https://github.com/MetaCubeX/mihomo/releases/download/Prerelease-Alpha/version.txt"
+if [[ -n "$VERSION_TAG" ]]; then
+RELEASE_TAG="$VERSION_TAG"
+VERSION_URL="https://github.com/MetaCubeX/mihomo/releases/download/${RELEASE_TAG}/version.txt"
+elif [[ "$FLAVOR_MODE" == "alpha" ]]; then
+RELEASE_TAG="Prerelease-Alpha"
+VERSION_URL="https://github.com/MetaCubeX/mihomo/releases/download/${RELEASE_TAG}/version.txt"
 fi
 
 download() {
@@ -102,12 +117,14 @@ fi
 
 echo "Version: $VERSION"
 
-FILE="mihomo-linux-${ASSET_ARCH}-${FLAVOR_MODE}-${VERSION}.gz"
-URL="https://github.com/MetaCubeX/mihomo/releases/download/${VERSION}/${FILE}"
-
-if [[ "$FLAVOR_MODE" == "alpha" ]]; then
-URL="https://github.com/MetaCubeX/mihomo/releases/download/Prerelease-Alpha/${FILE}"
+if [[ -z "$RELEASE_TAG" ]]; then
+RELEASE_TAG="$VERSION"
 fi
+
+echo "Release tag: $RELEASE_TAG"
+
+FILE="mihomo-linux-${ASSET_ARCH}-${FLAVOR_MODE}-${VERSION}.gz"
+URL="https://github.com/MetaCubeX/mihomo/releases/download/${RELEASE_TAG}/${FILE}"
 
 TMP_DIR="$(mktemp -d)"
 trap 'rm -rf "$TMP_DIR"' EXIT
