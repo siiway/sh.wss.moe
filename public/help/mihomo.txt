@@ -14,9 +14,12 @@ Features / Notes:
   - Defaults to the latest stable release, not `Prerelease-Alpha`
   - Use `--version <tag>` to install a specific release tag such as `v1.19.27` or `Prerelease-Alpha`
   - `--alpha` still selects the alpha-flavor binary, but latest stable remains the default unless `--version` is set
+  - Prefers distro package assets when available: `.deb`, `.rpm`, `.pkg.tar.zst`
+  - Package installs can provide the upstream systemd service file automatically
+  - If only the raw `.gz` binary is available and `/usr/lib/systemd/system/` exists, the script writes `mihomo.service` manually
   - Auto-detects arch by default: amd64, 386, arm64-v8, armv7
   - You can override arch with arg1, such as `amd64` or `arm64-v8`
-  - Installs binary to /usr/local/bin/mihomo
+  - Raw binary fallback installs to /usr/local/bin/mihomo
   - Mirror enabled by default, use --no-mirror to disable
 
 Requires: sudo

@@ -44,10 +44,25 @@ fi
 
 command -v curl >/dev/null || { echo "Missing curl, please install it first."; exit 1; }
 command -v gzip >/dev/null || { echo "Missing gzip, please install it first."; exit 1; }
+command -v mkdir >/dev/null || { echo "Missing mkdir, please install it first."; exit 1; }
 command -v install >/dev/null || { echo "Missing install, please install it first."; exit 1; }
 command -v mktemp >/dev/null || { echo "Missing mktemp, please install it first."; exit 1; }
 command -v sudo >/dev/null || { echo "Missing sudo, please install it first."; exit 1; }
 command -v uname >/dev/null || { echo "Missing uname, please install it first."; exit 1; }
+
+detect_pkg() {
+if command -v apt-get >/dev/null 2>&1; then
+echo "deb"
+elif command -v dnf >/dev/null 2>&1; then
+echo "rpm"
+elif command -v yum >/dev/null 2>&1; then
+echo "rpm"
+elif command -v pacman >/dev/null 2>&1; then
+echo "pkg.tar.zst"
+else
+echo "gz"
+fi
+}
 
 if [[ "$ARCH_MODE" == "auto" ]]; then
 ARCH_RAW="$(uname -m)"
@@ -68,6 +83,9 @@ ASSET_ARCH="$ARCH_MODE"
 fi
 
 echo "Resolved asset arch: $ASSET_ARCH"
+
+PKG_TYPE="$(detect_pkg)"
+echo "Package type: $PKG_TYPE"
 
 RELEASE_TAG=""
 VERSION_URL="https://github.com/MetaCubeX/mihomo/releases/latest/download/version.txt"
@@ -126,10 +144,26 @@ echo "Release tag: $RELEASE_TAG"
 FILE="mihomo-linux-${ASSET_ARCH}-${FLAVOR_MODE}-${VERSION}.gz"
 URL="https://github.com/MetaCubeX/mihomo/releases/download/${RELEASE_TAG}/${FILE}"
 
+if [[ "$PKG_TYPE" == "deb" ]]; then
+FILE="mihomo-linux-${ASSET_ARCH}-${FLAVOR_MODE}-${VERSION}.deb"
+URL="https://github.com/MetaCubeX/mihomo/releases/download/${RELEASE_TAG}/${FILE}"
+elif [[ "$PKG_TYPE" == "rpm" ]]; then
+FILE="mihomo-linux-${ASSET_ARCH}-${FLAVOR_MODE}-${VERSION}.rpm"
+URL="https://github.com/MetaCubeX/mihomo/releases/download/${RELEASE_TAG}/${FILE}"
+elif [[ "$PKG_TYPE" == "pkg.tar.zst" ]]; then
+FILE="mihomo-linux-${ASSET_ARCH}-${FLAVOR_MODE}-${VERSION}.pkg.tar.zst"
+URL="https://github.com/MetaCubeX/mihomo/releases/download/${RELEASE_TAG}/${FILE}"
+fi
+
 TMP_DIR="$(mktemp -d)"
 trap 'rm -rf "$TMP_DIR"' EXIT
 
 echo "Downloading: $FILE"
+if ! download "$URL" "$TMP_DIR/$FILE" "mihomo archive"; then
+if [[ "$PKG_TYPE" != "gz" ]]; then
+echo "Package asset not available, falling back to raw binary..."
+FILE="mihomo-linux-${ASSET_ARCH}-${FLAVOR_MODE}-${VERSION}.gz"
+URL="https://github.com/MetaCubeX/mihomo/releases/download/${RELEASE_TAG}/${FILE}"
 if ! download "$URL" "$TMP_DIR/$FILE" "mihomo archive"; then
 if [[ $MIRROR -eq 1 ]]; then
 MIRROR_URL="$(mirror_url "$URL")"
@@ -139,10 +173,70 @@ else
 exit 1
 fi
 fi
+else
+if [[ $MIRROR -eq 1 ]]; then
+MIRROR_URL="$(mirror_url "$URL")"
+echo "Official download failed, trying mirror..."
+download "$MIRROR_URL" "$TMP_DIR/$FILE" "mihomo archive (mirror)" || exit 1
+else
+exit 1
+fi
+fi
+fi
 
+SERVICE_WRITTEN=0
+
+case "$FILE" in
+*.deb)
+sudo dpkg -i "$TMP_DIR/$FILE"
+;;
+*.rpm)
+if command -v dnf >/dev/null 2>&1; then
+sudo dnf install -y "$TMP_DIR/$FILE"
+else
+sudo yum install -y "$TMP_DIR/$FILE"
+fi
+;;
+*.pkg.tar.zst)
+sudo pacman -U --noconfirm "$TMP_DIR/$FILE"
+;;
+*.gz)
 gzip -dc "$TMP_DIR/$FILE" > "$TMP_DIR/mihomo"
 chmod +x "$TMP_DIR/mihomo"
 sudo install -m 0755 "$TMP_DIR/mihomo" /usr/local/bin/mihomo
+if [[ -d /usr/lib/systemd/system ]]; then
+sudo tee /usr/lib/systemd/system/mihomo.service >/dev/null <<'EOF'
+[Unit]
+Description=mihomo Daemon, Another Clash Kernel.
+Documentation=https://wiki.metacubex.one
+After=network.target nss-lookup.target network-online.target
 
+[Service]
+Type=simple
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_TIME CAP_SYS_PTRACE CAP_DAC_READ_SEARCH CAP_DAC_OVERRIDE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_TIME CAP_SYS_PTRACE CAP_DAC_READ_SEARCH CAP_DAC_OVERRIDE
+ExecStart=/usr/local/bin/mihomo -d /etc/mihomo
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target
+EOF
+sudo mkdir -p /etc/mihomo
+sudo systemctl daemon-reload || true
+SERVICE_WRITTEN=1
+fi
+;;
+esac
+
+if [[ "$FILE" == *.gz ]]; then
 echo "Installed to /usr/local/bin/mihomo"
+else
+echo "Installed package: $FILE"
+fi
+if [[ $SERVICE_WRITTEN -eq 1 ]]; then
+echo "Installed systemd service to /usr/lib/systemd/system/mihomo.service"
+fi
 echo "Done."
